@@ -1,0 +1,17 @@
+{
+  "name": "advent-of-code-2021-a1329730-day-07",
+  "version": "1.0.0",
+  "description": "Day 7",
+  "main": "index.js",
+  "author": "Brock Boland",
+  "license": "UNLICENSED",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "advent-of-code-2021-a1329730-utils": "file:/Users/a1329730/src/advent-of-code/2021/utils"
+  }
+}
