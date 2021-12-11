@@ -21,14 +21,22 @@ function increasingFuelUsed(inputs) {
     crabPositions.sort((a, b) => a - b);
 
     let averagePosition = Math.floor(arrayAverage(crabPositions));
-    
-    let fuelSum = 0;
-    for(let c in crabPositions) {
-        let spotsMoved = Math.abs(crabPositions[c] - averagePosition);
-        let fuelUse = ((spotsMoved+1) * spotsMoved) / 2
-        fuelSum += fuelUse;
+    let range = 50;
+    let start = Math.max(0, averagePosition - range);
+    let end = Math.min(crabPositions[crabPositions.length-1], averagePosition + range);
+
+    let fuelPerSpot = {};
+    for(let position = start; position < end; position++) {
+        let fuelUse = increasingFuelToMove(crabPositions, position);
+        fuelPerSpot[position] = fuelUse;
     }
-    return fuelSum;
+
+    let lowestFuel = fuelPerSpot[averagePosition];
+    for (let p in fuelPerSpot) {
+        lowestFuel = Math.min(fuelPerSpot[p], lowestFuel);
+    }
+    console.log("Discoveries: ", fuelPerSpot);
+    return lowestFuel;
 }
 
 function arrayAverage(arr) {
@@ -36,11 +44,21 @@ function arrayAverage(arr) {
     return sum / arr.length;
 }
 
+function increasingFuelToMove(crabPositions, desiredPosition) {
+    let fuelSum = 0;
+    for(let c in crabPositions) {
+        let spotsMoved = Math.abs(crabPositions[c] - desiredPosition);
+        let fuelUse = ((spotsMoved+1) * spotsMoved) / 2
+        fuelSum += fuelUse;
+    }
+    return fuelSum;
+}
 
-// PART 1
+
+// PART 1: 343468, I think (forgot to note)
 let fuel = linearFuelUsed(fullInput[0]);
 console.log("Fuel used linearly: ", fuel);
 
-// PART 2
-let fuel2 = increasingFuelUsed(sampleInput[0]);
+// PART 2: 96086265
+let fuel2 = increasingFuelUsed(fullInput[0]);
 console.log("Fuel used that grows: ", fuel2);
