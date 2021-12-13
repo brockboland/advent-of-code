@@ -1,4 +1,4 @@
-import { fileContents } from "advent-of-code-2021-a1329730-utils";
+import { fileContents, validPointsSurrounding } from "advent-of-code-2021-a1329730-utils";
 
 let fullInput = fileContents("./input.txt");
 let sampleInput = fileContents("./sampleInput.txt");
@@ -120,27 +120,6 @@ function value(input, pointStr) {
     return input[x][y];
 }
 
-
-function validPointsSurrounding(point, maxX, maxY) {
-    let pointsToConsider = [
-        {x: point.x - 1, y: point.y},
-        {x: point.x + 1, y: point.y},
-        {x: point.x, y: point.y - 1},
-        {x: point.x, y: point.y + 1}
-    ];
-
-    let validPoints = pointsToConsider.filter(point => {
-        if (point.x < 0 || point.y < 0) {
-            return false;
-        }
-        if (point.x >= maxX || point.y >= maxY) {
-            return false;
-        }
-        return true;
-    });
-
-    return validPoints;
-}
 
 // PART 1
 let part1 = totalRiskPoints(sampleInput);
