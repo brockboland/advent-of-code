@@ -1,7 +1,7 @@
 {
-  "name": "advent-of-code-2021-a1329730-day-08",
+  "name": "advent-of-code-2021-a1329730-day-11",
   "version": "1.0.0",
-  "description": "Day 8",
+  "description": "Day 11",
   "main": "index.js",
   "author": "Brock Boland",
   "license": "UNLICENSED",
@@ -12,6 +12,6 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "advent-of-code-2021-a1329730-utils": "file:/Users/a1329730/src/advent-of-code/2021/utils"
+    "advent-of-code-2021-a1329730-utils": "link:/Users/a1329730/src/advent-of-code/2021/utils"
   }
 }

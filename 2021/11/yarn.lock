@@ -2,5 +2,6 @@
 # yarn lockfile v1
 
 
-"advent-of-code-2021-a1329730-utils@file:../utils":
-  version "1.0.0"
+"advent-of-code-2021-a1329730-utils@link:../utils":
+  version "0.0.0"
+  uid ""
