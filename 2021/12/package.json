@@ -15,6 +15,7 @@
     "advent-of-code-2021-a1329730-utils": "link:/Users/a1329730/src/advent-of-code/2021/utils"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.16.5",
     "jest": "^27.4.5"
   }
 }

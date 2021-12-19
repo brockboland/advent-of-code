@@ -9,7 +9,7 @@
   dependencies:
     "@babel/highlight" "^7.16.0"
 
-"@babel/compat-data@^7.16.0":
+"@babel/compat-data@^7.13.11", "@babel/compat-data@^7.16.0", "@babel/compat-data@^7.16.4":
   version "7.16.4"
   resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/compat-data/-/compat-data-7.16.4.tgz#081d6bbc336ec5c2435c6346b2ae1fb98b5ac68e"
   integrity sha1-CB1rvDNuxcJDXGNGsq4fuYtaxo4=
@@ -44,7 +44,22 @@
     jsesc "^2.5.1"
     source-map "^0.5.0"
 
-"@babel/helper-compilation-targets@^7.16.3":
+"@babel/helper-annotate-as-pure@^7.16.0":
+  version "7.16.0"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/helper-annotate-as-pure/-/helper-annotate-as-pure-7.16.0.tgz#9a1f0ebcda53d9a2d00108c4ceace6a5d5f1f08d"
+  integrity sha1-mh8OvNpT2aLQAQjEzqzmpdXx8I0=
+  dependencies:
+    "@babel/types" "^7.16.0"
+
+"@babel/helper-builder-binary-assignment-operator-visitor@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/helper-builder-binary-assignment-operator-visitor/-/helper-builder-binary-assignment-operator-visitor-7.16.5.tgz#a8429d064dce8207194b8bf05a70a9ea828746af"
+  integrity sha1-qEKdBk3OggcZS4vwWnCp6oKHRq8=
+  dependencies:
+    "@babel/helper-explode-assignable-expression" "^7.16.0"
+    "@babel/types" "^7.16.0"
+
+"@babel/helper-compilation-targets@^7.13.0", "@babel/helper-compilation-targets@^7.16.3":
   version "7.16.3"
   resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/helper-compilation-targets/-/helper-compilation-targets-7.16.3.tgz#5b480cd13f68363df6ec4dc8ac8e2da11363cbf0"
   integrity sha1-W0gM0T9oNj327E3IrI4toRNjy/A=
@@ -54,10 +69,52 @@
     browserslist "^4.17.5"
     semver "^6.3.0"
 
+"@babel/helper-create-class-features-plugin@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/helper-create-class-features-plugin/-/helper-create-class-features-plugin-7.16.5.tgz#5d1bcd096792c1ebec6249eebc6358eec55d0cad"
+  integrity sha1-XRvNCWeSwevsYknuvGNY7sVdDK0=
+  dependencies:
+    "@babel/helper-annotate-as-pure" "^7.16.0"
+    "@babel/helper-environment-visitor" "^7.16.5"
+    "@babel/helper-function-name" "^7.16.0"
+    "@babel/helper-member-expression-to-functions" "^7.16.5"
+    "@babel/helper-optimise-call-expression" "^7.16.0"
+    "@babel/helper-replace-supers" "^7.16.5"
+    "@babel/helper-split-export-declaration" "^7.16.0"
+
+"@babel/helper-create-regexp-features-plugin@^7.16.0":
+  version "7.16.0"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/helper-create-regexp-features-plugin/-/helper-create-regexp-features-plugin-7.16.0.tgz#06b2348ce37fccc4f5e18dcd8d75053f2a7c44ff"
+  integrity sha1-BrI0jON/zMT14Y3NjXUFPyp8RP8=
+  dependencies:
+    "@babel/helper-annotate-as-pure" "^7.16.0"
+    regexpu-core "^4.7.1"
+
+"@babel/helper-define-polyfill-provider@^0.3.0":
+  version "0.3.0"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/helper-define-polyfill-provider/-/helper-define-polyfill-provider-0.3.0.tgz#c5b10cf4b324ff840140bb07e05b8564af2ae971"
+  integrity sha1-xbEM9LMk/4QBQLsH4FuFZK8q6XE=
+  dependencies:
+    "@babel/helper-compilation-targets" "^7.13.0"
+    "@babel/helper-module-imports" "^7.12.13"
+    "@babel/helper-plugin-utils" "^7.13.0"
+    "@babel/traverse" "^7.13.0"
+    debug "^4.1.1"
+    lodash.debounce "^4.0.8"
+    resolve "^1.14.2"
+    semver "^6.1.2"
+
 "@babel/helper-environment-visitor@^7.16.5":
   version "7.16.5"
   resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/helper-environment-visitor/-/helper-environment-visitor-7.16.5.tgz#f6a7f38b3c6d8b07c88faea083c46c09ef5451b8"
   integrity sha1-9qfzizxtiwfIj66gg8RsCe9UUbg=
+  dependencies:
+    "@babel/types" "^7.16.0"
+
+"@babel/helper-explode-assignable-expression@^7.16.0":
+  version "7.16.0"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/helper-explode-assignable-expression/-/helper-explode-assignable-expression-7.16.0.tgz#753017337a15f46f9c09f674cff10cee9b9d7778"
+  integrity sha1-dTAXM3oV9G+cCfZ0z/EM7pudd3g=
   dependencies:
     "@babel/types" "^7.16.0"
 
@@ -84,7 +141,14 @@
   dependencies:
     "@babel/types" "^7.16.0"
 
-"@babel/helper-module-imports@^7.16.0":
+"@babel/helper-member-expression-to-functions@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/helper-member-expression-to-functions/-/helper-member-expression-to-functions-7.16.5.tgz#1bc9f7e87354e86f8879c67b316cb03d3dc2caab"
+  integrity sha1-G8n36HNU6G+IecZ7MWywPT3Cyqs=
+  dependencies:
+    "@babel/types" "^7.16.0"
+
+"@babel/helper-module-imports@^7.12.13", "@babel/helper-module-imports@^7.16.0":
   version "7.16.0"
   resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/helper-module-imports/-/helper-module-imports-7.16.0.tgz#90538e60b672ecf1b448f5f4f5433d37e79a3ec3"
   integrity sha1-kFOOYLZy7PG0SPX09UM9N+eaPsM=
@@ -105,15 +169,49 @@
     "@babel/traverse" "^7.16.5"
     "@babel/types" "^7.16.0"
 
-"@babel/helper-plugin-utils@^7.0.0", "@babel/helper-plugin-utils@^7.10.4", "@babel/helper-plugin-utils@^7.12.13", "@babel/helper-plugin-utils@^7.14.5", "@babel/helper-plugin-utils@^7.16.5", "@babel/helper-plugin-utils@^7.8.0":
+"@babel/helper-optimise-call-expression@^7.16.0":
+  version "7.16.0"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/helper-optimise-call-expression/-/helper-optimise-call-expression-7.16.0.tgz#cecdb145d70c54096b1564f8e9f10cd7d193b338"
+  integrity sha1-zs2xRdcMVAlrFWT46fEM19GTszg=
+  dependencies:
+    "@babel/types" "^7.16.0"
+
+"@babel/helper-plugin-utils@^7.0.0", "@babel/helper-plugin-utils@^7.10.4", "@babel/helper-plugin-utils@^7.12.13", "@babel/helper-plugin-utils@^7.13.0", "@babel/helper-plugin-utils@^7.14.5", "@babel/helper-plugin-utils@^7.16.5", "@babel/helper-plugin-utils@^7.8.0", "@babel/helper-plugin-utils@^7.8.3":
   version "7.16.5"
   resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/helper-plugin-utils/-/helper-plugin-utils-7.16.5.tgz#afe37a45f39fce44a3d50a7958129ea5b1a5c074"
   integrity sha1-r+N6RfOfzkSj1Qp5WBKepbGlwHQ=
+
+"@babel/helper-remap-async-to-generator@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/helper-remap-async-to-generator/-/helper-remap-async-to-generator-7.16.5.tgz#e706646dc4018942acb4b29f7e185bc246d65ac3"
+  integrity sha1-5wZkbcQBiUKstLKffhhbwkbWWsM=
+  dependencies:
+    "@babel/helper-annotate-as-pure" "^7.16.0"
+    "@babel/helper-wrap-function" "^7.16.5"
+    "@babel/types" "^7.16.0"
+
+"@babel/helper-replace-supers@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/helper-replace-supers/-/helper-replace-supers-7.16.5.tgz#96d3988bd0ab0a2d22c88c6198c3d3234ca25326"
+  integrity sha1-ltOYi9CrCi0iyIxhmMPTI0yiUyY=
+  dependencies:
+    "@babel/helper-environment-visitor" "^7.16.5"
+    "@babel/helper-member-expression-to-functions" "^7.16.5"
+    "@babel/helper-optimise-call-expression" "^7.16.0"
+    "@babel/traverse" "^7.16.5"
+    "@babel/types" "^7.16.0"
 
 "@babel/helper-simple-access@^7.16.0":
   version "7.16.0"
   resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/helper-simple-access/-/helper-simple-access-7.16.0.tgz#21d6a27620e383e37534cf6c10bba019a6f90517"
   integrity sha1-IdaidiDjg+N1NM9sELugGab5BRc=
+  dependencies:
+    "@babel/types" "^7.16.0"
+
+"@babel/helper-skip-transparent-expression-wrappers@^7.16.0":
+  version "7.16.0"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/helper-skip-transparent-expression-wrappers/-/helper-skip-transparent-expression-wrappers-7.16.0.tgz#0ee3388070147c3ae051e487eca3ebb0e2e8bb09"
+  integrity sha1-DuM4gHAUfDrgUeSH7KPrsOLouwk=
   dependencies:
     "@babel/types" "^7.16.0"
 
@@ -133,6 +231,16 @@
   version "7.14.5"
   resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/helper-validator-option/-/helper-validator-option-7.14.5.tgz#6e72a1fff18d5dfcb878e1e62f1a021c4b72d5a3"
   integrity sha1-bnKh//GNXfy4eOHmLxoCHEty1aM=
+
+"@babel/helper-wrap-function@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/helper-wrap-function/-/helper-wrap-function-7.16.5.tgz#0158fca6f6d0889c3fee8a6ed6e5e07b9b54e41f"
+  integrity sha1-AVj8pvbQiJw/7opu1uXge5tU5B8=
+  dependencies:
+    "@babel/helper-function-name" "^7.16.0"
+    "@babel/template" "^7.16.0"
+    "@babel/traverse" "^7.16.5"
+    "@babel/types" "^7.16.0"
 
 "@babel/helpers@^7.16.5":
   version "7.16.5"
@@ -157,6 +265,150 @@
   resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/parser/-/parser-7.16.5.tgz#beb3af702e54d24796341ab9420fb329131ad658"
   integrity sha1-vrOvcC5U0keWNBq5Qg+zKRMa1lg=
 
+"@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression@^7.16.2":
+  version "7.16.2"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression/-/plugin-bugfix-safari-id-destructuring-collision-in-function-expression-7.16.2.tgz#2977fca9b212db153c195674e57cfab807733183"
+  integrity sha1-KXf8qbIS2xU8GVZ05Xz6uAdzMYM=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.14.5"
+
+"@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining@^7.16.0":
+  version "7.16.0"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining/-/plugin-bugfix-v8-spread-parameters-in-optional-chaining-7.16.0.tgz#358972eaab006f5eb0826183b0c93cbcaf13e1e2"
+  integrity sha1-NYly6qsAb16wgmGDsMk8vK8T4eI=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.14.5"
+    "@babel/helper-skip-transparent-expression-wrappers" "^7.16.0"
+    "@babel/plugin-proposal-optional-chaining" "^7.16.0"
+
+"@babel/plugin-proposal-async-generator-functions@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-proposal-async-generator-functions/-/plugin-proposal-async-generator-functions-7.16.5.tgz#fd3bd7e0d98404a3d4cbca15a72d533f8c9a2f67"
+  integrity sha1-/TvX4NmEBKPUy8oVpy1TP4yaL2c=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.16.5"
+    "@babel/helper-remap-async-to-generator" "^7.16.5"
+    "@babel/plugin-syntax-async-generators" "^7.8.4"
+
+"@babel/plugin-proposal-class-properties@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-proposal-class-properties/-/plugin-proposal-class-properties-7.16.5.tgz#3269f44b89122110f6339806e05d43d84106468a"
+  integrity sha1-Mmn0S4kSIRD2M5gG4F1D2EEGRoo=
+  dependencies:
+    "@babel/helper-create-class-features-plugin" "^7.16.5"
+    "@babel/helper-plugin-utils" "^7.16.5"
+
+"@babel/plugin-proposal-class-static-block@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-proposal-class-static-block/-/plugin-proposal-class-static-block-7.16.5.tgz#df58ab015a7d3b0963aafc8f20792dcd834952a9"
+  integrity sha1-31irAVp9OwljqvyPIHktzYNJUqk=
+  dependencies:
+    "@babel/helper-create-class-features-plugin" "^7.16.5"
+    "@babel/helper-plugin-utils" "^7.16.5"
+    "@babel/plugin-syntax-class-static-block" "^7.14.5"
+
+"@babel/plugin-proposal-dynamic-import@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-proposal-dynamic-import/-/plugin-proposal-dynamic-import-7.16.5.tgz#2e0d19d5702db4dcb9bc846200ca02f2e9d60e9e"
+  integrity sha1-Lg0Z1XAttNy5vIRiAMoC8unWDp4=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.16.5"
+    "@babel/plugin-syntax-dynamic-import" "^7.8.3"
+
+"@babel/plugin-proposal-export-namespace-from@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-proposal-export-namespace-from/-/plugin-proposal-export-namespace-from-7.16.5.tgz#3b4dd28378d1da2fea33e97b9f25d1c2f5bf1ac9"
+  integrity sha1-O03Sg3jR2i/qM+l7nyXRwvW/Gsk=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.16.5"
+    "@babel/plugin-syntax-export-namespace-from" "^7.8.3"
+
+"@babel/plugin-proposal-json-strings@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-proposal-json-strings/-/plugin-proposal-json-strings-7.16.5.tgz#1e726930fca139caab6b084d232a9270d9d16f9c"
+  integrity sha1-HnJpMPyhOcqrawhNIyqScNnRb5w=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.16.5"
+    "@babel/plugin-syntax-json-strings" "^7.8.3"
+
+"@babel/plugin-proposal-logical-assignment-operators@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-proposal-logical-assignment-operators/-/plugin-proposal-logical-assignment-operators-7.16.5.tgz#df1f2e4b5a0ec07abf061d2c18e53abc237d3ef5"
+  integrity sha1-3x8uS1oOwHq/Bh0sGOU6vCN9PvU=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.16.5"
+    "@babel/plugin-syntax-logical-assignment-operators" "^7.10.4"
+
+"@babel/plugin-proposal-nullish-coalescing-operator@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-proposal-nullish-coalescing-operator/-/plugin-proposal-nullish-coalescing-operator-7.16.5.tgz#652555bfeeeee2d2104058c6225dc6f75e2d0f07"
+  integrity sha1-ZSVVv+7u4tIQQFjGIl3G914tDwc=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.16.5"
+    "@babel/plugin-syntax-nullish-coalescing-operator" "^7.8.3"
+
+"@babel/plugin-proposal-numeric-separator@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-proposal-numeric-separator/-/plugin-proposal-numeric-separator-7.16.5.tgz#edcb6379b6cf4570be64c45965d8da7a2debf039"
+  integrity sha1-7ctjebbPRXC+ZMRZZdjaei3r8Dk=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.16.5"
+    "@babel/plugin-syntax-numeric-separator" "^7.10.4"
+
+"@babel/plugin-proposal-object-rest-spread@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-proposal-object-rest-spread/-/plugin-proposal-object-rest-spread-7.16.5.tgz#f30f80dacf7bc1404bf67f99c8d9c01665e830ad"
+  integrity sha1-8w+A2s97wUBL9n+ZyNnAFmXoMK0=
+  dependencies:
+    "@babel/compat-data" "^7.16.4"
+    "@babel/helper-compilation-targets" "^7.16.3"
+    "@babel/helper-plugin-utils" "^7.16.5"
+    "@babel/plugin-syntax-object-rest-spread" "^7.8.3"
+    "@babel/plugin-transform-parameters" "^7.16.5"
+
+"@babel/plugin-proposal-optional-catch-binding@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-proposal-optional-catch-binding/-/plugin-proposal-optional-catch-binding-7.16.5.tgz#1a5405765cf589a11a33a1fd75b2baef7d48b74e"
+  integrity sha1-GlQFdlz1iaEaM6H9dbK6731It04=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.16.5"
+    "@babel/plugin-syntax-optional-catch-binding" "^7.8.3"
+
+"@babel/plugin-proposal-optional-chaining@^7.16.0", "@babel/plugin-proposal-optional-chaining@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-proposal-optional-chaining/-/plugin-proposal-optional-chaining-7.16.5.tgz#a5fa61056194d5059366c0009cb9a9e66ed75c1f"
+  integrity sha1-pfphBWGU1QWTZsAAnLmp5m7XXB8=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.16.5"
+    "@babel/helper-skip-transparent-expression-wrappers" "^7.16.0"
+    "@babel/plugin-syntax-optional-chaining" "^7.8.3"
+
+"@babel/plugin-proposal-private-methods@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-proposal-private-methods/-/plugin-proposal-private-methods-7.16.5.tgz#2086f7d78c1b0c712d49b5c3fbc2d1ca21a7ee12"
+  integrity sha1-IIb314wbDHEtSbXD+8LRyiGn7hI=
+  dependencies:
+    "@babel/helper-create-class-features-plugin" "^7.16.5"
+    "@babel/helper-plugin-utils" "^7.16.5"
+
+"@babel/plugin-proposal-private-property-in-object@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-proposal-private-property-in-object/-/plugin-proposal-private-property-in-object-7.16.5.tgz#a42d4b56005db3d405b12841309dbca647e7a21b"
+  integrity sha1-pC1LVgBds9QFsShBMJ28pkfnohs=
+  dependencies:
+    "@babel/helper-annotate-as-pure" "^7.16.0"
+    "@babel/helper-create-class-features-plugin" "^7.16.5"
+    "@babel/helper-plugin-utils" "^7.16.5"
+    "@babel/plugin-syntax-private-property-in-object" "^7.14.5"
+
+"@babel/plugin-proposal-unicode-property-regex@^7.16.5", "@babel/plugin-proposal-unicode-property-regex@^7.4.4":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-proposal-unicode-property-regex/-/plugin-proposal-unicode-property-regex-7.16.5.tgz#35fe753afa7c572f322bd068ff3377bde0f37080"
+  integrity sha1-Nf51Ovp8Vy8yK9Bo/zN3veDzcIA=
+  dependencies:
+    "@babel/helper-create-regexp-features-plugin" "^7.16.0"
+    "@babel/helper-plugin-utils" "^7.16.5"
+
 "@babel/plugin-syntax-async-generators@^7.8.4":
   version "7.8.4"
   resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-syntax-async-generators/-/plugin-syntax-async-generators-7.8.4.tgz#a983fb1aeb2ec3f6ed042a210f640e90e786fe0d"
@@ -171,12 +423,33 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.8.0"
 
-"@babel/plugin-syntax-class-properties@^7.8.3":
+"@babel/plugin-syntax-class-properties@^7.12.13", "@babel/plugin-syntax-class-properties@^7.8.3":
   version "7.12.13"
   resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-syntax-class-properties/-/plugin-syntax-class-properties-7.12.13.tgz#b5c987274c4a3a82b89714796931a6b53544ae10"
   integrity sha1-tcmHJ0xKOoK4lxR5aTGmtTVErhA=
   dependencies:
     "@babel/helper-plugin-utils" "^7.12.13"
+
+"@babel/plugin-syntax-class-static-block@^7.14.5":
+  version "7.14.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-syntax-class-static-block/-/plugin-syntax-class-static-block-7.14.5.tgz#195df89b146b4b78b3bf897fd7a257c84659d406"
+  integrity sha1-GV34mxRrS3izv4l/16JXyEZZ1AY=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.14.5"
+
+"@babel/plugin-syntax-dynamic-import@^7.8.3":
+  version "7.8.3"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-syntax-dynamic-import/-/plugin-syntax-dynamic-import-7.8.3.tgz#62bf98b2da3cd21d626154fc96ee5b3cb68eacb3"
+  integrity sha1-Yr+Ysto80h1iYVT8lu5bPLaOrLM=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.8.0"
+
+"@babel/plugin-syntax-export-namespace-from@^7.8.3":
+  version "7.8.3"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-syntax-export-namespace-from/-/plugin-syntax-export-namespace-from-7.8.3.tgz#028964a9ba80dbc094c915c487ad7c4e7a66465a"
+  integrity sha1-AolkqbqA28CUyRXEh618TnpmRlo=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.8.3"
 
 "@babel/plugin-syntax-import-meta@^7.8.3":
   version "7.10.4"
@@ -192,7 +465,7 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.8.0"
 
-"@babel/plugin-syntax-logical-assignment-operators@^7.8.3":
+"@babel/plugin-syntax-logical-assignment-operators@^7.10.4", "@babel/plugin-syntax-logical-assignment-operators@^7.8.3":
   version "7.10.4"
   resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-syntax-logical-assignment-operators/-/plugin-syntax-logical-assignment-operators-7.10.4.tgz#ca91ef46303530448b906652bac2e9fe9941f699"
   integrity sha1-ypHvRjA1MESLkGZSusLp/plB9pk=
@@ -206,7 +479,7 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.8.0"
 
-"@babel/plugin-syntax-numeric-separator@^7.8.3":
+"@babel/plugin-syntax-numeric-separator@^7.10.4", "@babel/plugin-syntax-numeric-separator@^7.8.3":
   version "7.10.4"
   resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-syntax-numeric-separator/-/plugin-syntax-numeric-separator-7.10.4.tgz#b9b070b3e33570cd9fd07ba7fa91c0dd37b9af97"
   integrity sha1-ubBws+M1cM2f0Hun+pHA3Te5r5c=
@@ -234,7 +507,14 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.8.0"
 
-"@babel/plugin-syntax-top-level-await@^7.8.3":
+"@babel/plugin-syntax-private-property-in-object@^7.14.5":
+  version "7.14.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-syntax-private-property-in-object/-/plugin-syntax-private-property-in-object-7.14.5.tgz#0dc6671ec0ea22b6e94a1114f857970cd39de1ad"
+  integrity sha1-DcZnHsDqIrbpShEU+FeXDNOd4a0=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.14.5"
+
+"@babel/plugin-syntax-top-level-await@^7.14.5", "@babel/plugin-syntax-top-level-await@^7.8.3":
   version "7.14.5"
   resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-syntax-top-level-await/-/plugin-syntax-top-level-await-7.14.5.tgz#c1cfdadc35a646240001f06138247b741c34d94c"
   integrity sha1-wc/a3DWmRiQAAfBhOCR7dBw02Uw=
@@ -248,6 +528,353 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.16.5"
 
+"@babel/plugin-transform-arrow-functions@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-transform-arrow-functions/-/plugin-transform-arrow-functions-7.16.5.tgz#04c18944dd55397b521d9d7511e791acea7acf2d"
+  integrity sha1-BMGJRN1VOXtSHZ11EeeRrOp6zy0=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.16.5"
+
+"@babel/plugin-transform-async-to-generator@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-transform-async-to-generator/-/plugin-transform-async-to-generator-7.16.5.tgz#89c9b501e65bb14c4579a6ce9563f859de9b34e4"
+  integrity sha1-icm1AeZbsUxFeabOlWP4Wd6bNOQ=
+  dependencies:
+    "@babel/helper-module-imports" "^7.16.0"
+    "@babel/helper-plugin-utils" "^7.16.5"
+    "@babel/helper-remap-async-to-generator" "^7.16.5"
+
+"@babel/plugin-transform-block-scoped-functions@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-transform-block-scoped-functions/-/plugin-transform-block-scoped-functions-7.16.5.tgz#af087494e1c387574260b7ee9b58cdb5a4e9b0b0"
+  integrity sha1-rwh0lOHDh1dCYLfum1jNtaTpsLA=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.16.5"
+
+"@babel/plugin-transform-block-scoping@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-transform-block-scoping/-/plugin-transform-block-scoping-7.16.5.tgz#b91f254fe53e210eabe4dd0c40f71c0ed253c5e7"
+  integrity sha1-uR8lT+U+IQ6r5N0MQPccDtJTxec=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.16.5"
+
+"@babel/plugin-transform-classes@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-transform-classes/-/plugin-transform-classes-7.16.5.tgz#6acf2ec7adb50fb2f3194dcd2909dbd056dcf216"
+  integrity sha1-as8ux621D7LzGU3NKQnb0Fbc8hY=
+  dependencies:
+    "@babel/helper-annotate-as-pure" "^7.16.0"
+    "@babel/helper-environment-visitor" "^7.16.5"
+    "@babel/helper-function-name" "^7.16.0"
+    "@babel/helper-optimise-call-expression" "^7.16.0"
+    "@babel/helper-plugin-utils" "^7.16.5"
+    "@babel/helper-replace-supers" "^7.16.5"
+    "@babel/helper-split-export-declaration" "^7.16.0"
+    globals "^11.1.0"
+
+"@babel/plugin-transform-computed-properties@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-transform-computed-properties/-/plugin-transform-computed-properties-7.16.5.tgz#2af91ebf0cceccfcc701281ada7cfba40a9b322a"
+  integrity sha1-KvkevwzOzPzHASga2nz7pAqbMio=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.16.5"
+
+"@babel/plugin-transform-destructuring@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-transform-destructuring/-/plugin-transform-destructuring-7.16.5.tgz#89ebc87499ac4a81b897af53bb5d3eed261bd568"
+  integrity sha1-ievIdJmsSoG4l69Tu10+7SYb1Wg=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.16.5"
+
+"@babel/plugin-transform-dotall-regex@^7.16.5", "@babel/plugin-transform-dotall-regex@^7.4.4":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-transform-dotall-regex/-/plugin-transform-dotall-regex-7.16.5.tgz#b40739c00b6686820653536d6d143e311de67936"
+  integrity sha1-tAc5wAtmhoIGU1NtbRQ+MR3meTY=
+  dependencies:
+    "@babel/helper-create-regexp-features-plugin" "^7.16.0"
+    "@babel/helper-plugin-utils" "^7.16.5"
+
+"@babel/plugin-transform-duplicate-keys@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-transform-duplicate-keys/-/plugin-transform-duplicate-keys-7.16.5.tgz#2450f2742325412b746d7d005227f5e8973b512a"
+  integrity sha1-JFDydCMlQSt0bX0AUif16Jc7USo=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.16.5"
+
+"@babel/plugin-transform-exponentiation-operator@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-transform-exponentiation-operator/-/plugin-transform-exponentiation-operator-7.16.5.tgz#36e261fa1ab643cfaf30eeab38e00ed1a76081e2"
+  integrity sha1-NuJh+hq2Q8+vMO6rOOAO0adggeI=
+  dependencies:
+    "@babel/helper-builder-binary-assignment-operator-visitor" "^7.16.5"
+    "@babel/helper-plugin-utils" "^7.16.5"
+
+"@babel/plugin-transform-for-of@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-transform-for-of/-/plugin-transform-for-of-7.16.5.tgz#9b544059c6ca11d565457c0ff1f08e13ce225261"
+  integrity sha1-m1RAWcbKEdVlRXwP8fCOE84iUmE=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.16.5"
+
+"@babel/plugin-transform-function-name@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-transform-function-name/-/plugin-transform-function-name-7.16.5.tgz#6896ebb6a5538a75d6a4086a277752f655a7bd15"
+  integrity sha1-aJbrtqVTinXWpAhqJ3dS9lWnvRU=
+  dependencies:
+    "@babel/helper-function-name" "^7.16.0"
+    "@babel/helper-plugin-utils" "^7.16.5"
+
+"@babel/plugin-transform-literals@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-transform-literals/-/plugin-transform-literals-7.16.5.tgz#af392b90e3edb2bd6dc316844cbfd6b9e009d320"
+  integrity sha1-rzkrkOPtsr1twxaETL/WueAJ0yA=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.16.5"
+
+"@babel/plugin-transform-member-expression-literals@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-transform-member-expression-literals/-/plugin-transform-member-expression-literals-7.16.5.tgz#4bd6ecdc11932361631097b779ca5c7570146dd5"
+  integrity sha1-S9bs3BGTI2FjEJe3ecpcdXAUbdU=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.16.5"
+
+"@babel/plugin-transform-modules-amd@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-transform-modules-amd/-/plugin-transform-modules-amd-7.16.5.tgz#92c0a3e83f642cb7e75fada9ab497c12c2616527"
+  integrity sha1-ksCj6D9kLLfnX62pq0l8EsJhZSc=
+  dependencies:
+    "@babel/helper-module-transforms" "^7.16.5"
+    "@babel/helper-plugin-utils" "^7.16.5"
+    babel-plugin-dynamic-import-node "^2.3.3"
+
+"@babel/plugin-transform-modules-commonjs@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-transform-modules-commonjs/-/plugin-transform-modules-commonjs-7.16.5.tgz#4ee03b089536f076b2773196529d27c32b9d7bde"
+  integrity sha1-TuA7CJU28HaydzGWUp0nwyude94=
+  dependencies:
+    "@babel/helper-module-transforms" "^7.16.5"
+    "@babel/helper-plugin-utils" "^7.16.5"
+    "@babel/helper-simple-access" "^7.16.0"
+    babel-plugin-dynamic-import-node "^2.3.3"
+
+"@babel/plugin-transform-modules-systemjs@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-transform-modules-systemjs/-/plugin-transform-modules-systemjs-7.16.5.tgz#07078ba2e3cc94fbdd06836e355c246e98ad006b"
+  integrity sha1-BweLouPMlPvdBoNuNVwkbpitAGs=
+  dependencies:
+    "@babel/helper-hoist-variables" "^7.16.0"
+    "@babel/helper-module-transforms" "^7.16.5"
+    "@babel/helper-plugin-utils" "^7.16.5"
+    "@babel/helper-validator-identifier" "^7.15.7"
+    babel-plugin-dynamic-import-node "^2.3.3"
+
+"@babel/plugin-transform-modules-umd@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-transform-modules-umd/-/plugin-transform-modules-umd-7.16.5.tgz#caa9c53d636fb4e3c99fd35a4c9ba5e5cd7e002e"
+  integrity sha1-yqnFPWNvtOPJn9NaTJul5c1+AC4=
+  dependencies:
+    "@babel/helper-module-transforms" "^7.16.5"
+    "@babel/helper-plugin-utils" "^7.16.5"
+
+"@babel/plugin-transform-named-capturing-groups-regex@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-transform-named-capturing-groups-regex/-/plugin-transform-named-capturing-groups-regex-7.16.5.tgz#4afd8cdee377ce3568f4e8a9ee67539b69886a3c"
+  integrity sha1-Sv2M3uN3zjVo9Oip7mdTm2mIajw=
+  dependencies:
+    "@babel/helper-create-regexp-features-plugin" "^7.16.0"
+
+"@babel/plugin-transform-new-target@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-transform-new-target/-/plugin-transform-new-target-7.16.5.tgz#759ea9d6fbbc20796056a5d89d13977626384416"
+  integrity sha1-dZ6p1vu8IHlgVqXYnROXdiY4RBY=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.16.5"
+
+"@babel/plugin-transform-object-super@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-transform-object-super/-/plugin-transform-object-super-7.16.5.tgz#8ccd9a1bcd3e7732ff8aa1702d067d8cd70ce380"
+  integrity sha1-jM2aG80+dzL/iqFwLQZ9jNcM44A=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.16.5"
+    "@babel/helper-replace-supers" "^7.16.5"
+
+"@babel/plugin-transform-parameters@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-transform-parameters/-/plugin-transform-parameters-7.16.5.tgz#4fc74b18a89638bd90aeec44a11793ecbe031dde"
+  integrity sha1-T8dLGKiWOL2QruxEoReT7L4DHd4=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.16.5"
+
+"@babel/plugin-transform-property-literals@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-transform-property-literals/-/plugin-transform-property-literals-7.16.5.tgz#58f1465a7202a2bb2e6b003905212dd7a79abe3f"
+  integrity sha1-WPFGWnICorsuawA5BSEt16eavj8=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.16.5"
+
+"@babel/plugin-transform-regenerator@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-transform-regenerator/-/plugin-transform-regenerator-7.16.5.tgz#704cc6d8dd3dd4758267621ab7b36375238cef13"
+  integrity sha1-cEzG2N091HWCZ2Iat7NjdSOM7xM=
+  dependencies:
+    regenerator-transform "^0.14.2"
+
+"@babel/plugin-transform-reserved-words@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-transform-reserved-words/-/plugin-transform-reserved-words-7.16.5.tgz#db95e98799675e193dc2b47d3e72a7c0651d0c30"
+  integrity sha1-25Xph5lnXhk9wrR9PnKnwGUdDDA=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.16.5"
+
+"@babel/plugin-transform-shorthand-properties@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-transform-shorthand-properties/-/plugin-transform-shorthand-properties-7.16.5.tgz#ccb60b1a23b799f5b9a14d97c5bc81025ffd96d7"
+  integrity sha1-zLYLGiO3mfW5oU2XxbyBAl/9ltc=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.16.5"
+
+"@babel/plugin-transform-spread@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-transform-spread/-/plugin-transform-spread-7.16.5.tgz#912b06cff482c233025d3e69cf56d3e8fa166c29"
+  integrity sha1-kSsGz/SCwjMCXT5pz1bT6PoWbCk=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.16.5"
+    "@babel/helper-skip-transparent-expression-wrappers" "^7.16.0"
+
+"@babel/plugin-transform-sticky-regex@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-transform-sticky-regex/-/plugin-transform-sticky-regex-7.16.5.tgz#593579bb2b5a8adfbe02cb43823275d9098f75f9"
+  integrity sha1-WTV5uytait++AstDgjJ12QmPdfk=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.16.5"
+
+"@babel/plugin-transform-template-literals@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-transform-template-literals/-/plugin-transform-template-literals-7.16.5.tgz#343651385fd9923f5aa2275ca352c5d9183e1773"
+  integrity sha1-NDZROF/Zkj9aoidco1LF2Rg+F3M=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.16.5"
+
+"@babel/plugin-transform-typeof-symbol@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-transform-typeof-symbol/-/plugin-transform-typeof-symbol-7.16.5.tgz#a1d1bf2c71573fe30965d0e4cd6a3291202e20ed"
+  integrity sha1-odG/LHFXP+MJZdDkzWoykSAuIO0=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.16.5"
+
+"@babel/plugin-transform-unicode-escapes@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-transform-unicode-escapes/-/plugin-transform-unicode-escapes-7.16.5.tgz#80507c225af49b4f4ee647e2a0ce53d2eeff9e85"
+  integrity sha1-gFB8Ilr0m09O5kfioM5T0u7/noU=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.16.5"
+
+"@babel/plugin-transform-unicode-regex@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/plugin-transform-unicode-regex/-/plugin-transform-unicode-regex-7.16.5.tgz#ac84d6a1def947d71ffb832426aa53b83d7ed49e"
+  integrity sha1-rITWod75R9cf+4MkJqpTuD1+1J4=
+  dependencies:
+    "@babel/helper-create-regexp-features-plugin" "^7.16.0"
+    "@babel/helper-plugin-utils" "^7.16.5"
+
+"@babel/preset-env@^7.16.5":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/preset-env/-/preset-env-7.16.5.tgz#2e94d922f4a890979af04ffeb6a6b4e44ba90847"
+  integrity sha1-LpTZIvSokJea8E/+tqa05EupCEc=
+  dependencies:
+    "@babel/compat-data" "^7.16.4"
+    "@babel/helper-compilation-targets" "^7.16.3"
+    "@babel/helper-plugin-utils" "^7.16.5"
+    "@babel/helper-validator-option" "^7.14.5"
+    "@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression" "^7.16.2"
+    "@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining" "^7.16.0"
+    "@babel/plugin-proposal-async-generator-functions" "^7.16.5"
+    "@babel/plugin-proposal-class-properties" "^7.16.5"
+    "@babel/plugin-proposal-class-static-block" "^7.16.5"
+    "@babel/plugin-proposal-dynamic-import" "^7.16.5"
+    "@babel/plugin-proposal-export-namespace-from" "^7.16.5"
+    "@babel/plugin-proposal-json-strings" "^7.16.5"
+    "@babel/plugin-proposal-logical-assignment-operators" "^7.16.5"
+    "@babel/plugin-proposal-nullish-coalescing-operator" "^7.16.5"
+    "@babel/plugin-proposal-numeric-separator" "^7.16.5"
+    "@babel/plugin-proposal-object-rest-spread" "^7.16.5"
+    "@babel/plugin-proposal-optional-catch-binding" "^7.16.5"
+    "@babel/plugin-proposal-optional-chaining" "^7.16.5"
+    "@babel/plugin-proposal-private-methods" "^7.16.5"
+    "@babel/plugin-proposal-private-property-in-object" "^7.16.5"
+    "@babel/plugin-proposal-unicode-property-regex" "^7.16.5"
+    "@babel/plugin-syntax-async-generators" "^7.8.4"
+    "@babel/plugin-syntax-class-properties" "^7.12.13"
+    "@babel/plugin-syntax-class-static-block" "^7.14.5"
+    "@babel/plugin-syntax-dynamic-import" "^7.8.3"
+    "@babel/plugin-syntax-export-namespace-from" "^7.8.3"
+    "@babel/plugin-syntax-json-strings" "^7.8.3"
+    "@babel/plugin-syntax-logical-assignment-operators" "^7.10.4"
+    "@babel/plugin-syntax-nullish-coalescing-operator" "^7.8.3"
+    "@babel/plugin-syntax-numeric-separator" "^7.10.4"
+    "@babel/plugin-syntax-object-rest-spread" "^7.8.3"
+    "@babel/plugin-syntax-optional-catch-binding" "^7.8.3"
+    "@babel/plugin-syntax-optional-chaining" "^7.8.3"
+    "@babel/plugin-syntax-private-property-in-object" "^7.14.5"
+    "@babel/plugin-syntax-top-level-await" "^7.14.5"
+    "@babel/plugin-transform-arrow-functions" "^7.16.5"
+    "@babel/plugin-transform-async-to-generator" "^7.16.5"
+    "@babel/plugin-transform-block-scoped-functions" "^7.16.5"
+    "@babel/plugin-transform-block-scoping" "^7.16.5"
+    "@babel/plugin-transform-classes" "^7.16.5"
+    "@babel/plugin-transform-computed-properties" "^7.16.5"
+    "@babel/plugin-transform-destructuring" "^7.16.5"
+    "@babel/plugin-transform-dotall-regex" "^7.16.5"
+    "@babel/plugin-transform-duplicate-keys" "^7.16.5"
+    "@babel/plugin-transform-exponentiation-operator" "^7.16.5"
+    "@babel/plugin-transform-for-of" "^7.16.5"
+    "@babel/plugin-transform-function-name" "^7.16.5"
+    "@babel/plugin-transform-literals" "^7.16.5"
+    "@babel/plugin-transform-member-expression-literals" "^7.16.5"
+    "@babel/plugin-transform-modules-amd" "^7.16.5"
+    "@babel/plugin-transform-modules-commonjs" "^7.16.5"
+    "@babel/plugin-transform-modules-systemjs" "^7.16.5"
+    "@babel/plugin-transform-modules-umd" "^7.16.5"
+    "@babel/plugin-transform-named-capturing-groups-regex" "^7.16.5"
+    "@babel/plugin-transform-new-target" "^7.16.5"
+    "@babel/plugin-transform-object-super" "^7.16.5"
+    "@babel/plugin-transform-parameters" "^7.16.5"
+    "@babel/plugin-transform-property-literals" "^7.16.5"
+    "@babel/plugin-transform-regenerator" "^7.16.5"
+    "@babel/plugin-transform-reserved-words" "^7.16.5"
+    "@babel/plugin-transform-shorthand-properties" "^7.16.5"
+    "@babel/plugin-transform-spread" "^7.16.5"
+    "@babel/plugin-transform-sticky-regex" "^7.16.5"
+    "@babel/plugin-transform-template-literals" "^7.16.5"
+    "@babel/plugin-transform-typeof-symbol" "^7.16.5"
+    "@babel/plugin-transform-unicode-escapes" "^7.16.5"
+    "@babel/plugin-transform-unicode-regex" "^7.16.5"
+    "@babel/preset-modules" "^0.1.5"
+    "@babel/types" "^7.16.0"
+    babel-plugin-polyfill-corejs2 "^0.3.0"
+    babel-plugin-polyfill-corejs3 "^0.4.0"
+    babel-plugin-polyfill-regenerator "^0.3.0"
+    core-js-compat "^3.19.1"
+    semver "^6.3.0"
+
+"@babel/preset-modules@^0.1.5":
+  version "0.1.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/preset-modules/-/preset-modules-0.1.5.tgz#ef939d6e7f268827e1841638dc6ff95515e115d9"
+  integrity sha1-75Odbn8miCfhhBY43G/5VRXhFdk=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.0.0"
+    "@babel/plugin-proposal-unicode-property-regex" "^7.4.4"
+    "@babel/plugin-transform-dotall-regex" "^7.4.4"
+    "@babel/types" "^7.4.4"
+    esutils "^2.0.2"
+
+"@babel/runtime@^7.8.4":
+  version "7.16.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/runtime/-/runtime-7.16.5.tgz#7f3e34bf8bdbbadf03fbb7b1ea0d929569c9487a"
+  integrity sha1-fz40v4vbut8D+7ex6g2SlWnJSHo=
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/template@^7.16.0", "@babel/template@^7.3.3":
   version "7.16.0"
   resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/template/-/template-7.16.0.tgz#d16a35ebf4cd74e202083356fab21dd89363ddd6"
@@ -257,7 +884,7 @@
     "@babel/parser" "^7.16.0"
     "@babel/types" "^7.16.0"
 
-"@babel/traverse@^7.1.0", "@babel/traverse@^7.16.5", "@babel/traverse@^7.7.2":
+"@babel/traverse@^7.1.0", "@babel/traverse@^7.13.0", "@babel/traverse@^7.16.5", "@babel/traverse@^7.7.2":
   version "7.16.5"
   resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/traverse/-/traverse-7.16.5.tgz#d7d400a8229c714a59b87624fc67b0f1fbd4b2b3"
   integrity sha1-19QAqCKccUpZuHYk/Gew8fvUsrM=
@@ -273,7 +900,7 @@
     debug "^4.1.0"
     globals "^11.1.0"
 
-"@babel/types@^7.0.0", "@babel/types@^7.16.0", "@babel/types@^7.3.0", "@babel/types@^7.3.3":
+"@babel/types@^7.0.0", "@babel/types@^7.16.0", "@babel/types@^7.3.0", "@babel/types@^7.3.3", "@babel/types@^7.4.4":
   version "7.16.0"
   resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/@babel/types/-/types-7.16.0.tgz#db3b313804f96aadd0b776c4823e127ad67289ba"
   integrity sha1-2zsxOAT5aq3Qt3bEgj4SetZyibo=
@@ -680,6 +1307,13 @@ babel-jest@^27.4.5:
     graceful-fs "^4.2.4"
     slash "^3.0.0"
 
+babel-plugin-dynamic-import-node@^2.3.3:
+  version "2.3.3"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/babel-plugin-dynamic-import-node/-/babel-plugin-dynamic-import-node-2.3.3.tgz#84fda19c976ec5c6defef57f9427b3def66e17a3"
+  integrity sha1-hP2hnJduxcbe/vV/lCez3vZuF6M=
+  dependencies:
+    object.assign "^4.1.0"
+
 babel-plugin-istanbul@^6.0.0:
   version "6.1.1"
   resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/babel-plugin-istanbul/-/babel-plugin-istanbul-6.1.1.tgz#fa88ec59232fd9b4e36dbbc540a8ec9a9b47da73"
@@ -700,6 +1334,30 @@ babel-plugin-jest-hoist@^27.4.0:
     "@babel/types" "^7.3.3"
     "@types/babel__core" "^7.0.0"
     "@types/babel__traverse" "^7.0.6"
+
+babel-plugin-polyfill-corejs2@^0.3.0:
+  version "0.3.0"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/babel-plugin-polyfill-corejs2/-/babel-plugin-polyfill-corejs2-0.3.0.tgz#407082d0d355ba565af24126fb6cb8e9115251fd"
+  integrity sha1-QHCC0NNVulZa8kEm+2y46RFSUf0=
+  dependencies:
+    "@babel/compat-data" "^7.13.11"
+    "@babel/helper-define-polyfill-provider" "^0.3.0"
+    semver "^6.1.1"
+
+babel-plugin-polyfill-corejs3@^0.4.0:
+  version "0.4.0"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/babel-plugin-polyfill-corejs3/-/babel-plugin-polyfill-corejs3-0.4.0.tgz#0b571f4cf3d67f911512f5c04842a7b8e8263087"
+  integrity sha1-C1cfTPPWf5EVEvXASEKnuOgmMIc=
+  dependencies:
+    "@babel/helper-define-polyfill-provider" "^0.3.0"
+    core-js-compat "^3.18.0"
+
+babel-plugin-polyfill-regenerator@^0.3.0:
+  version "0.3.0"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/babel-plugin-polyfill-regenerator/-/babel-plugin-polyfill-regenerator-0.3.0.tgz#9ebbcd7186e1a33e21c5e20cae4e7983949533be"
+  integrity sha1-nrvNcYbhoz4hxeIMrk55g5SVM74=
+  dependencies:
+    "@babel/helper-define-polyfill-provider" "^0.3.0"
 
 babel-preset-current-node-syntax@^1.0.0:
   version "1.0.1"
@@ -763,6 +1421,17 @@ browserslist@^4.17.5:
     node-releases "^2.0.1"
     picocolors "^1.0.0"
 
+browserslist@^4.19.1:
+  version "4.19.1"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/browserslist/-/browserslist-4.19.1.tgz#4ac0435b35ab655896c31d53018b6dd5e9e4c9a3"
+  integrity sha1-SsBDWzWrZViWwx1TAYtt1enkyaM=
+  dependencies:
+    caniuse-lite "^1.0.30001286"
+    electron-to-chromium "^1.4.17"
+    escalade "^3.1.1"
+    node-releases "^2.0.1"
+    picocolors "^1.0.0"
+
 bser@2.1.1:
   version "2.1.1"
   resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/bser/-/bser-2.1.1.tgz#e6787da20ece9d07998533cfd9de6f5c38f4bc05"
@@ -774,6 +1443,14 @@ buffer-from@^1.0.0:
   version "1.1.2"
   resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/buffer-from/-/buffer-from-1.1.2.tgz#2b146a6fd72e80b4f55d255f35ed59a3a9a41bd5"
   integrity sha1-KxRqb9cugLT1XSVfNe1Zo6mkG9U=
+
+call-bind@^1.0.0:
+  version "1.0.2"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/call-bind/-/call-bind-1.0.2.tgz#b1d4e89e688119c3c9a903ad30abb2f6a919be3c"
+  integrity sha1-sdTonmiBGcPJqQOtMKuy9qkZvjw=
+  dependencies:
+    function-bind "^1.1.1"
+    get-intrinsic "^1.0.2"
 
 callsites@^3.0.0:
   version "3.1.0"
@@ -889,6 +1566,14 @@ convert-source-map@^1.4.0, convert-source-map@^1.6.0, convert-source-map@^1.7.0:
   dependencies:
     safe-buffer "~5.1.1"
 
+core-js-compat@^3.18.0, core-js-compat@^3.19.1:
+  version "3.20.0"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/core-js-compat/-/core-js-compat-3.20.0.tgz#fd704640c5a213816b6d10ec0192756111e2c9d1"
+  integrity sha1-/XBGQMWiE4FrbRDsAZJ1YRHiydE=
+  dependencies:
+    browserslist "^4.19.1"
+    semver "7.0.0"
+
 cross-spawn@^7.0.3:
   version "7.0.3"
   resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/cross-spawn/-/cross-spawn-7.0.3.tgz#f73a85b9d5d41d045551c177e2882d4ac85728a6"
@@ -950,6 +1635,13 @@ deepmerge@^4.2.2:
   version "4.2.2"
   resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/deepmerge/-/deepmerge-4.2.2.tgz#44d2ea3679b8f4d4ffba33f03d865fc1e7bf4955"
   integrity sha1-RNLqNnm49NT/ujPwPYZfwee/SVU=
+
+define-properties@^1.1.3:
+  version "1.1.3"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/define-properties/-/define-properties-1.1.3.tgz#cf88da6cbee26fe6db7094f61d870cbd84cee9f1"
+  integrity sha1-z4jabL7ib+bbcJT2HYcMvYTO6fE=
+  dependencies:
+    object-keys "^1.0.12"
 
 delayed-stream@~1.0.0:
   version "1.0.0"
@@ -1128,6 +1820,15 @@ get-caller-file@^2.0.5:
   resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/get-caller-file/-/get-caller-file-2.0.5.tgz#4f94412a82db32f36e3b0b9741f8a97feb031f7e"
   integrity sha1-T5RBKoLbMvNuOwuXQfipf+sDH34=
 
+get-intrinsic@^1.0.2:
+  version "1.1.1"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/get-intrinsic/-/get-intrinsic-1.1.1.tgz#15f59f376f855c446963948f0d24cd3637b4abc6"
+  integrity sha1-FfWfN2+FXERpY5SPDSTNNje0q8Y=
+  dependencies:
+    function-bind "^1.1.1"
+    has "^1.0.3"
+    has-symbols "^1.0.1"
+
 get-package-type@^0.1.0:
   version "0.1.0"
   resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/get-package-type/-/get-package-type-0.1.0.tgz#8de2d803cff44df3bc6c456e6668b36c3926e11a"
@@ -1169,6 +1870,11 @@ has-flag@^4.0.0:
   version "4.0.0"
   resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/has-flag/-/has-flag-4.0.0.tgz#944771fd9c81c81265c4d6941860da06bb59479b"
   integrity sha1-lEdx/ZyByBJlxNaUGGDaBrtZR5s=
+
+has-symbols@^1.0.1:
+  version "1.0.2"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/has-symbols/-/has-symbols-1.0.2.tgz#165d3070c00309752a1236a479331e3ac56f1423"
+  integrity sha1-Fl0wcMADCXUqEjakeTMeOsVvFCM=
 
 has@^1.0.3:
   version "1.0.3"
@@ -1800,6 +2506,11 @@ jsesc@^2.5.1:
   resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/jsesc/-/jsesc-2.5.2.tgz#80564d2e483dacf6e8ef209650a67df3f0c283a4"
   integrity sha1-gFZNLkg9rPbo7yCWUKZ98/DCg6Q=
 
+jsesc@~0.5.0:
+  version "0.5.0"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/jsesc/-/jsesc-0.5.0.tgz#e7dee66e35d6fc16f710fe91d5cf69f70f08911d"
+  integrity sha1-597mbjXW/Bb3EP6R1c9p9w8IkR0=
+
 json5@^2.1.2:
   version "2.2.0"
   resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/json5/-/json5-2.2.0.tgz#2dfefe720c6ba525d9ebd909950f0515316c89a3"
@@ -1831,6 +2542,11 @@ locate-path@^5.0.0:
   integrity sha1-Gvujlq/WdqbUJQTQpno6frn2KqA=
   dependencies:
     p-locate "^4.1.0"
+
+lodash.debounce@^4.0.8:
+  version "4.0.8"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
+  integrity sha1-gteb/zCmfEAF/9XiUVMArZyk168=
 
 lodash@^4.7.0:
   version "4.17.21"
@@ -1936,6 +2652,21 @@ nwsapi@^2.2.0:
   version "2.2.0"
   resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/nwsapi/-/nwsapi-2.2.0.tgz#204879a9e3d068ff2a55139c2c772780681a38b7"
   integrity sha1-IEh5qePQaP8qVROcLHcngGgaOLc=
+
+object-keys@^1.0.12, object-keys@^1.1.1:
+  version "1.1.1"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/object-keys/-/object-keys-1.1.1.tgz#1c47f272df277f3b1daf061677d9c82e2322c60e"
+  integrity sha1-HEfyct8nfzsdrwYWd9nILiMixg4=
+
+object.assign@^4.1.0:
+  version "4.1.2"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/object.assign/-/object.assign-4.1.2.tgz#0ed54a342eceb37b38ff76eb831a0e788cb63940"
+  integrity sha1-DtVKNC7Os3s4/3brgxoOeIy2OUA=
+  dependencies:
+    call-bind "^1.0.0"
+    define-properties "^1.1.3"
+    has-symbols "^1.0.1"
+    object-keys "^1.1.1"
 
 once@^1.3.0:
   version "1.4.0"
@@ -2067,6 +2798,54 @@ react-is@^17.0.1:
   resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha1-5pHUqOnHiTZWVVOas3J2Kw77VPA=
 
+regenerate-unicode-properties@^9.0.0:
+  version "9.0.0"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/regenerate-unicode-properties/-/regenerate-unicode-properties-9.0.0.tgz#54d09c7115e1f53dc2314a974b32c1c344efe326"
+  integrity sha1-VNCccRXh9T3CMUqXSzLBw0Tv4yY=
+  dependencies:
+    regenerate "^1.4.2"
+
+regenerate@^1.4.2:
+  version "1.4.2"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/regenerate/-/regenerate-1.4.2.tgz#b9346d8827e8f5a32f7ba29637d398b69014848a"
+  integrity sha1-uTRtiCfo9aMve6KWN9OYtpAUhIo=
+
+regenerator-runtime@^0.13.4:
+  version "0.13.9"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/regenerator-runtime/-/regenerator-runtime-0.13.9.tgz#8925742a98ffd90814988d7566ad30ca3b263b52"
+  integrity sha1-iSV0Kpj/2QgUmI11Zq0wyjsmO1I=
+
+regenerator-transform@^0.14.2:
+  version "0.14.5"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/regenerator-transform/-/regenerator-transform-0.14.5.tgz#c98da154683671c9c4dcb16ece736517e1b7feb4"
+  integrity sha1-yY2hVGg2ccnE3LFuznNlF+G3/rQ=
+  dependencies:
+    "@babel/runtime" "^7.8.4"
+
+regexpu-core@^4.7.1:
+  version "4.8.0"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/regexpu-core/-/regexpu-core-4.8.0.tgz#e5605ba361b67b1718478501327502f4479a98f0"
+  integrity sha1-5WBbo2G2excYR4UBMnUC9EeamPA=
+  dependencies:
+    regenerate "^1.4.2"
+    regenerate-unicode-properties "^9.0.0"
+    regjsgen "^0.5.2"
+    regjsparser "^0.7.0"
+    unicode-match-property-ecmascript "^2.0.0"
+    unicode-match-property-value-ecmascript "^2.0.0"
+
+regjsgen@^0.5.2:
+  version "0.5.2"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/regjsgen/-/regjsgen-0.5.2.tgz#92ff295fb1deecbf6ecdab2543d207e91aa33733"
+  integrity sha1-kv8pX7He7L9uzaslQ9IH6RqjNzM=
+
+regjsparser@^0.7.0:
+  version "0.7.0"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/regjsparser/-/regjsparser-0.7.0.tgz#a6b667b54c885e18b52554cb4960ef71187e9968"
+  integrity sha1-prZntUyIXhi1JVTLSWDvcRh+mWg=
+  dependencies:
+    jsesc "~0.5.0"
+
 require-directory@^2.1.1:
   version "2.1.1"
   resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/require-directory/-/require-directory-2.1.1.tgz#8c64ad5fd30dab1c976e2344ffe7f792a6a6df42"
@@ -2089,7 +2868,7 @@ resolve.exports@^1.1.0:
   resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/resolve.exports/-/resolve.exports-1.1.0.tgz#5ce842b94b05146c0e03076985d1d0e7e48c90c9"
   integrity sha1-XOhCuUsFFGwOAwdphdHQ5+SMkMk=
 
-resolve@^1.20.0:
+resolve@^1.14.2, resolve@^1.20.0:
   version "1.20.0"
   resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/resolve/-/resolve-1.20.0.tgz#629a013fb3f70755d6f0b7935cc1c2c5378b1975"
   integrity sha1-YpoBP7P3B1XW8LeTXMHCxTeLGXU=
@@ -2121,7 +2900,12 @@ saxes@^5.0.1:
   dependencies:
     xmlchars "^2.2.0"
 
-semver@^6.0.0, semver@^6.3.0:
+semver@7.0.0:
+  version "7.0.0"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/semver/-/semver-7.0.0.tgz#5f3ca35761e47e05b206c6daff2cf814f0316b8e"
+  integrity sha1-XzyjV2HkfgWyBsba/yz4FPAxa44=
+
+semver@^6.0.0, semver@^6.1.1, semver@^6.1.2, semver@^6.3.0:
   version "6.3.0"
   resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/semver/-/semver-6.3.0.tgz#ee0a64c8af5e8ceea67687b133761e1becbd1d3d"
   integrity sha1-7gpkyK9ejO6mdoexM3YeG+y9HT0=
@@ -2341,6 +3125,29 @@ typedarray-to-buffer@^3.1.5:
   integrity sha1-qX7nqf9CaRufeD/xvFES/j/KkIA=
   dependencies:
     is-typedarray "^1.0.0"
+
+unicode-canonical-property-names-ecmascript@^2.0.0:
+  version "2.0.0"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/unicode-canonical-property-names-ecmascript/-/unicode-canonical-property-names-ecmascript-2.0.0.tgz#301acdc525631670d39f6146e0e77ff6bbdebddc"
+  integrity sha1-MBrNxSVjFnDTn2FG4Od/9rvevdw=
+
+unicode-match-property-ecmascript@^2.0.0:
+  version "2.0.0"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/unicode-match-property-ecmascript/-/unicode-match-property-ecmascript-2.0.0.tgz#54fd16e0ecb167cf04cf1f756bdcc92eba7976c3"
+  integrity sha1-VP0W4OyxZ88Ezx91a9zJLrp5dsM=
+  dependencies:
+    unicode-canonical-property-names-ecmascript "^2.0.0"
+    unicode-property-aliases-ecmascript "^2.0.0"
+
+unicode-match-property-value-ecmascript@^2.0.0:
+  version "2.0.0"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/unicode-match-property-value-ecmascript/-/unicode-match-property-value-ecmascript-2.0.0.tgz#1a01aa57247c14c568b89775a54938788189a714"
+  integrity sha1-GgGqVyR8FMVouJd1pUk4eIGJpxQ=
+
+unicode-property-aliases-ecmascript@^2.0.0:
+  version "2.0.0"
+  resolved "https://artifactory.code.bestbuy.com:443/artifactory/api/npm/npm-virtual/unicode-property-aliases-ecmascript/-/unicode-property-aliases-ecmascript-2.0.0.tgz#0a36cb9a585c4f6abd51ad1deddb285c165297c8"
+  integrity sha1-CjbLmlhcT2q9Ua0d7dsoXBZSl8g=
 
 universalify@^0.1.2:
   version "0.1.2"
