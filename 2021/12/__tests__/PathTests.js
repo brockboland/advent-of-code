@@ -1,7 +1,8 @@
 import { fileContents } from "advent-of-code-2021-a1329730-utils";
-import { firstChallenge, processCaveSystem, isBigCave, validPathsThrough, secondChallenge } from "../index";
+import { firstChallenge, processCaveSystem, smallCavesInSystem, isBigCave, isStartOrEnd, validPathsThrough, secondChallenge, secondChallengePaths } from "../index";
 
-describe("Part 1", ()=> {
+
+describe("General Cave Stuff",() => {
   test("Cave validation", () => {
     expect(isBigCave("start")).toBe(false);
     expect(isBigCave("end")).toBe(false);
@@ -12,6 +13,28 @@ describe("Part 1", ()=> {
     expect(isBigCave("B")).toBe(true);
     expect(isBigCave("OKTHEN")).toBe(true);
   });
+
+  test("Start and end caves", () => {
+    expect(isStartOrEnd("start")).toBe(true);
+    expect(isStartOrEnd("end")).toBe(true);
+    expect(isStartOrEnd("A")).toBe(false);
+    expect(isStartOrEnd("b")).toBe(false);
+    expect(isStartOrEnd("C")).toBe(false);
+    expect(isStartOrEnd("literally anything else")).toBe(false);
+    expect(isStartOrEnd("START")).toBe(false);
+    expect(isStartOrEnd("END")).toBe(false);
+  });
+
+  test("Small caves", () => {
+    let input = fileContents(mockFilePath("sample10.txt"));
+    let caves = processCaveSystem(input);
+    let smallOnes = smallCavesInSystem(caves);
+    expect(smallOnes.length).toBe(3);
+    expect(smallOnes).toEqual(["b", "c", "d"]);
+  });
+})
+
+describe("Part 1", ()=> {
 
   test("Valid path structure for a small cave system", () => {
     let input = fileContents(mockFilePath("sample10.txt"));
@@ -26,8 +49,6 @@ describe("Part 1", ()=> {
     let input = fileContents(mockFilePath("sample10.txt"));
     let caves = processCaveSystem(input);
     let paths = validPathsThrough(caves, "b", []);
-
-    console.log("Valid paths", paths);
 
     expect(paths.length).toEqual(3);
     expect(paths[0]).toEqual(["A", "c", "A", "end"])
@@ -64,6 +85,49 @@ describe("Part 1", ()=> {
     let result = firstChallenge(input);
     expect(result).toEqual(4775);
   });
+});
+
+describe("Part 2", () => {
+
+  test("Valid paths to end", () => {
+    let input = fileContents(mockFilePath("sample10.txt"));
+    let caves = processCaveSystem(input);
+    let paths = validPathsThrough(caves, "b", [], "c");
+
+    expect(paths.length).toEqual(4);
+    expect(paths[0]).toEqual(["A", "c", "A", "c", "A", "end"])
+    expect(paths[1]).toEqual(["A", "c", "A", "end"])
+    expect(paths[2]).toEqual(["A", "end"])
+    expect(paths[3]).toEqual(["end"])
+  })
+
+  test("Cave with 36 paths", () => {
+    let input = fileContents(mockFilePath("sample10.txt"));
+    let paths = secondChallengePaths(input);
+    
+    expect(paths.length).toEqual(36);
+    let result = secondChallenge(input);
+    expect(result).toEqual(36);
+  });
+
+  test("Cave with 103 paths", () => {
+    let input = fileContents(mockFilePath("sample19.txt"));
+    let result = secondChallenge(input);
+    expect(result).toEqual(103);
+  });
+
+  test("Cave with 3509 paths", () => {
+    let input = fileContents(mockFilePath("sample226.txt"));
+    let result = secondChallenge(input);
+    expect(result).toEqual(3509);
+  });
+
+    // ACTUAL problem input
+    test("Problem part 2 cave", () => {
+      let input = fileContents(realInputPath());
+      let result = secondChallenge(input);
+      expect(result).toEqual(152480);
+    });
 });
 
 
