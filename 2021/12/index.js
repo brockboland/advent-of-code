@@ -1,7 +1,6 @@
 export const firstChallenge = (input) => {
     let caves = processCaveSystem(input);
-    let paths = validPathsThrough(caves);
-    console.log("Valid paths:", paths);
+    let paths = validPathsThrough(caves, "start", []);
     return paths.length;
 }
 
