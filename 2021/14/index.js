@@ -19,16 +19,11 @@ export const extractedPairs = (str) => {
 };
 
 export const templateAfterReplacingPairs = (template, pairReplacements) => {
-  let pairs = extractedPairs(template);
-  let newTrios = pairs.map((pair) => {
-    let newMiddle = pairReplacements[pair];
-    return pair[0] + newMiddle + pair[1];
-  });
-
   // Add the first two characters of each new trio, since the third character overlaps with the first of the next one
-  let joinedTrios = newTrios.map((trio) => trio[0] + trio[1]).join("");
-  // Tack on the third character in the last trio (the last character in the input template), since it was left out
-  return joinedTrios + template[template.length - 1];
+  return extractedPairs(template).map((pair) => {
+    let newMiddle = pairReplacements[pair];
+    return pair[0] + newMiddle;
+  }).join("") + template[template.length - 1];
 };
 
 export const polymerAfterUpdating = (
@@ -50,7 +45,7 @@ export const mostCommonElement = (polymer) => {
 
 export const mostCommonElementCount = (polymer) => {
     let counts = sortedElementCounts(polymer);
-        return counts[counts.length - 1].count;
+    return counts[counts.length - 1].count;
 };
 
 export const leastCommonElement = (polymer) => {
@@ -82,11 +77,17 @@ export const sortedElementCounts = (polymer) => {
 };
 
 export const firstChallenge = (template, pairReplacements) => {
-    let finalPolymer = polymerAfterUpdating(template, pairReplacements, 10);
-    return mostCommonElementCount(finalPolymer) - leastCommonElementCount(finalPolymer);
+    return calculate(template, pairReplacements, 10);
 };
 
 export const secondChallenge = (template, pairReplacements) => {
-    let finalPolymer = polymerAfterUpdating(template, pairReplacements, 40);
-    return mostCommonElementCount(finalPolymer) - leastCommonElementCount(finalPolymer);
+    return calculate(template, pairReplacements, 40);
 };
+
+const calculate = (template, pairReplacements, iterations) => {
+    let finalPolymer = polymerAfterUpdating(template, pairReplacements, iterations);
+    let counts = sortedElementCounts(finalPolymer);
+    let most = counts[counts.length - 1].count;
+    let least = counts[0].count;
+    return most - least;
+}
