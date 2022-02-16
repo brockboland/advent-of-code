@@ -144,19 +144,19 @@ describe("Part 1", () => {
   });
 });
 
-// describe("Part 2", () => {
-//   test("Sample input", () => {
-//     let {template, pairReplacements} = parseProblemInput(mockInput);
-//     let result = secondChallenge(template, pairReplacements);
-//     expect(result).toEqual(2188189693529);
-//   });
+describe("Part 2", () => {
+  test("Sample input", () => {
+    let {template, pairReplacements} = parseProblemInput(mockInput);
+    let result = secondChallenge(template, pairReplacements);
+    expect(result).toEqual(2188189693529);
+  });
 
-//   test("Actual puzzle input", () => {
-//     let {template, pairReplacements} = parseProblemInput(fileContents(realInputPath()));
-//     let result = secondChallenge(template, pairReplacements);
-//     expect(result).toEqual(2703);
-//   });
-// });
+  // test("Actual puzzle input", () => {
+  //   let {template, pairReplacements} = parseProblemInput(fileContents(realInputPath()));
+  //   let result = secondChallenge(template, pairReplacements);
+  //   expect(result).toEqual(2703);
+  // });
+});
 
 const mockFilePath = (filename) => {
   return `${__dirname}/${filename}`;

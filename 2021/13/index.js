@@ -1,11 +1,3 @@
-export const firstChallenge = (input) => {
-    
-}
-
-export const secondChallenge = (input) => {
-   
-}
-
 // Input: array of lines
 // Return: {points: [], foldingInstructions: []}
 export const parseProblemInput = (input) => {
