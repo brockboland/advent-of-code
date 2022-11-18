@@ -1,0 +1,21 @@
+{
+  "name": "advent-of-code-2021-a1329730-day-16",
+  "version": "1.0.0",
+  "description": "Day 16",
+  "main": "index.js",
+  "author": "Brock Boland",
+  "license": "UNLICENSED",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node .",
+    "test": "jest"
+  },
+  "dependencies": {
+    "advent-of-code-2021-a1329730-utils": "link:/Users/a1329730/src/advent-of-code/2021/utils"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.16.5",
+    "jest": "^27.4.5"
+  }
+}
