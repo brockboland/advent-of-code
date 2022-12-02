@@ -63,9 +63,6 @@ export default function Day2() {
         const [themRaw, meRaw] = moves[i].split(" ");
         const me = moveMap[meRaw];
         const them = moveMap[themRaw];
-        const myScore = winLoseDrawScore(them, me);
-        console.log("Me: " + me + ", them: " + them);
-        console.log(myScore);
         overallScore += winLoseDrawScore(them, me) + scores[me];
     }
 	const part1Answer = overallScore; // 15422
@@ -95,9 +92,6 @@ export default function Day2() {
         const [themRaw, meRaw] = moves[i].split(" ");
         const them = moveMap[themRaw];
         const me = part2StrategicMap[them][meRaw];
-        const myScore = winLoseDrawScore(them, me);
-        console.log("Me: " + me + ", them: " + them);
-        console.log(myScore);
         part2Score += winLoseDrawScore(them, me) + scores[me];
     }
 	const part2Answer = part2Score; // 15442
