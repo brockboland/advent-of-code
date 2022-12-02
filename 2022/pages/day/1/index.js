@@ -13,17 +13,15 @@ export default function Day1() {
 	if (!data) return <div>Data not found</div>;
 	//Handle the ready state and display the result contained in the data object mapped to the structure of the json file
 
+	// BEGIN DAY 1 SPECIFIC LOGIC
 	const summedGroups = data
 		.split("\n\n")
 		.map((x) =>
 			x.split("\n").reduce((a, b) => parseInt(a) + parseInt(b), 0)
 		);
 	summedGroups.sort((a, b) => b - a);
-
-	// BEGIN DAY 1 SPECIFIC LOGIC
 	const part1Answer = summedGroups[0];
-	const part2Answer = summedGroups.slice(0,3).reduce((a,b) => a+b, 0);
-
+	const part2Answer = summedGroups.slice(0, 3).reduce((a, b) => a + b, 0);
 	// END DAY 1 SPECIFIC LOGIC
 
 	return (
@@ -36,7 +34,9 @@ export default function Day1() {
 				<div>
 					Part 1 answer: <code>{part1Answer}</code>
 				</div>
-				<div>Part 2 answer: {part2Answer}</div>
+				<div>
+					Part 2 answer: <code>{part2Answer}</code>
+				</div>
 			</main>
 		</div>
 	);
