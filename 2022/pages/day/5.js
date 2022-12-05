@@ -1,7 +1,7 @@
 import Head from "next/head";
 import path from "path";
 import { promises as fs } from "fs";
-import DayStat from "../../../components/DayState";
+import DayStat from "../../components/DayState";
 
 const day = 5;
 
