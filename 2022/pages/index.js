@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
@@ -17,7 +16,7 @@ export default function Home() {
 				<h1 className={styles.title}>Advent of Code 2022</h1>
 
 				<div className="calendar basis-full text-center">
-					<div className="grid grid-flow-row grid-rows-5 grid-cols-7 gap-1">
+					<div className="grid grid-cols-7 gap-1">
 						<div className={dayLabelClasses}>Sun</div>
 						<div className={dayLabelClasses}>Mon</div>
 						<div className={dayLabelClasses}>Tue</div>
