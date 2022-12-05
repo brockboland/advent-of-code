@@ -1,65 +1,116 @@
 import Head from "next/head";
-import useSWR from "swr";
+import path from "path";
+import { promises as fs } from "fs";
+import DayStat from "../../../components/DayState";
 
-//Write a fetcher function to wrap the native fetch function and return the result of a call to url in json format
-const fetcher = (url) => fetch(url).then((res) => res.text());
+const day = 4;
 
-export default function Day4() {
-	const { data, error } = useSWR("/api/puzzleInputs/4", fetcher);
+export async function getServerSideProps() {
+	//Find the absolute path of the puzzleInputs directory
+	const puzzleInputsDirectory = path.join(process.cwd(), "puzzleInputs");
 
-	//Handle the error state
-	if (error) return <div>Failed to load: {error.message}</div>;
-	//Handle the loading state
-	if (!data) return <div>No data yet</div>;
-	//Handle the ready state and display the result contained in the data object mapped to the structure of the json file
+	//Read the input data file
+	var sampleFileContents, realFileContents;
+	try {
+		sampleFileContents = await fs.readFile(
+			puzzleInputsDirectory + "/" + day + "-sample.txt",
+			"utf8"
+		);
+
+		realFileContents = await fs.readFile(
+			puzzleInputsDirectory + "/" + day + ".txt",
+			"utf8"
+		);
+	} catch (err) {
+		return {
+			props: { error: "Couldn't load data! " + JSNON.stringify(err) },
+		};
+	}
+
+	return {
+		props: { sampleData: sampleFileContents, realData: realFileContents },
+	};
+}
+
+export default function Day4({ sampleData, realData }) {
+	if (!sampleData) {
+		return <div>Sample data is empty</div>;
+	}
+	if (!realData) {
+		return <div>Real data is empty</div>;
+	}
+
+	let finalDetails = {
+		part1SampleExpected: "Unknown",
+		part1SampleCalculated: 0,
+		part1RealExpected: "Unknown",
+		part1RealCalculated: 0,
+		part2SampleExpected: "Unknown",
+		part2SampleCalculated: 0,
+		part2RealExpected: "Unknown",
+		part2RealCalculated: 0,
+	};
+
 
 	// BEGIN DAY 4 SPECIFIC LOGIC
-	let part1Answer = "Coming soon";
-	let part2Answer = "Coming soon";
+	finalDetails.part1SampleExpected = 2;
+	finalDetails.part1RealExpected = 453;
 
-	// Part 1
-	const pairs = data
-		.split("\n")
-		.map((a) => a.split(","))
-		.map((a) => {
-			const [l1, r1] = a[0].split("-").map(parseFloat);
-			const [l2, r2] = a[1].split("-").map(parseFloat);
-			return { l1, r1, l2, r2 };
+	const pairsFromData = (data) => {
+		return data
+			.split("\n")
+			.map((a) => a.split(","))
+			.map((a) => {
+				const [l1, r1] = a[0].split("-").map(parseFloat);
+				const [l2, r2] = a[1].split("-").map(parseFloat);
+				return { l1, r1, l2, r2 };
+			});
+		}
+
+	const fullyContainedRanges = (pairs) => {
+		let answer = 0; // 453
+		pairs.forEach(a => {
+			if ((a.l1 >= a.l2 && a.r1 <= a.r2) || (a.l1 <= a.l2 && a.r1 >= a.r2)) {
+				answer++;
+			}
 		});
+		return answer;
+	}
 
-    part1Answer = 0; // 453
-    pairs.forEach(a => {
-        if ((a.l1 >= a.l2 && a.r1 <= a.r2) || (a.l1 <= a.l2 && a.r1 >= a.r2)) {
-            part1Answer++;
-        }
-    });
+	const samplePairs = pairsFromData(sampleData);
+	const realPairs = pairsFromData(realData);
+	finalDetails.part1SampleCalculated = fullyContainedRanges(samplePairs);
+	finalDetails.part1RealCalculated = fullyContainedRanges(realPairs);
 
     // Part 2
-    part2Answer = 0; // 919
-    pairs.forEach(a => {
-        // {l1: 2, r1: 8, l2: 3, r2: 7}
-        if ((a.l1 >= a.l2 && a.l1 <= a.r2) || (a.r1 >= a.l2 && a.r1 <= a.r2) ||
-            (a.l2 >= a.l1 && a.l2 <= a.r1) || (a.r2 >= a.l1 && a.r2 <= a.r1)) {
-            part2Answer++;
-        }
-    });
+	finalDetails.part2SampleExpected = 4;
+	finalDetails.part2RealExpected = 919;
 
+	const overlappingRanges = (pairs) => {
+		let answer = 0;
+		pairs.forEach(a => {
+			if ((a.l1 >= a.l2 && a.l1 <= a.r2) || (a.r1 >= a.l2 && a.r1 <= a.r2) ||
+				(a.l2 >= a.l1 && a.l2 <= a.r1) || (a.r2 >= a.l1 && a.r2 <= a.r1)) {
+					answer++;
+			}
+		});
+		return answer;
+	}
+
+	finalDetails.part2SampleCalculated = overlappingRanges(samplePairs);
+	finalDetails.part2RealCalculated = overlappingRanges(realPairs);
 
 	// END DAY 4 SPECIFIC LOGIC
 
 	return (
 		<div>
 			<Head>
-				<title>Day 4</title>
+				<title>Day {day}</title>
 			</Head>
 
 			<main>
-				<div>
-					Part 1 answer: <code>{part1Answer}</code>
-				</div>
-				<div>
-					Part 2 answer: <code>{part2Answer}</code>
-				</div>
+				<h1>Day {day}</h1>
+				<DayStat {...finalDetails} />
 			</main>
 		</div>
 	);
