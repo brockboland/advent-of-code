@@ -6,6 +6,11 @@ export default function Home() {
 	const dayClasses = "p-1 rounded-md bg-gray-200";
 	const day1Classes = dayClasses + " col-start-5";
 
+	let days = [];
+	for (let d = 2; d <= 25; d++) {
+		days.push(d)
+	}
+
 	return (
 		<div>
 			<Head>
@@ -25,37 +30,10 @@ export default function Home() {
 						<div className={dayLabelClasses}>Fri</div>
 						<div className={dayLabelClasses}>Sat</div>
 						<div className={day1Classes}>1</div>
-						<div className={dayClasses}>2</div>
-						<div className={dayClasses}>3</div>
-						<div className={dayClasses}>4</div>
-						<div className={dayClasses}>5</div>
-						<div className={dayClasses}>6</div>
-						<div className={dayClasses}>7</div>
-						<div className={dayClasses}>8</div>
-						<div className={dayClasses}>9</div>
-						<div className={dayClasses}>10</div>
-						<div className={dayClasses}>11</div>
-						<div className={dayClasses}>12</div>
-						<div className={dayClasses}>13</div>
-						<div className={dayClasses}>14</div>
-						<div className={dayClasses}>15</div>
-						<div className={dayClasses}>16</div>
-						<div className={dayClasses}>17</div>
-						<div className={dayClasses}>18</div>
-						<div className={dayClasses}>19</div>
-						<div className={dayClasses}>20</div>
-						<div className={dayClasses}>21</div>
-						<div className={dayClasses}>22</div>
-						<div className={dayClasses}>23</div>
-						<div className={dayClasses}>24</div>
-						<div className={dayClasses}>25</div>
-
-						<div className={dayClasses}>26</div>
-						<div className={dayClasses}>27</div>
-						<div className={dayClasses}>28</div>
-						<div className={dayClasses}>29</div>
-						<div className={dayClasses}>30</div>
-						<div className={dayClasses}>31</div>
+						{days.map((d, i) => {
+							const link = "/day/" + d;
+							return <div className={dayClasses} key={i}><a href={link}>{d}</a></div>
+						})}
 					</div>
 				</div>
 			</main>
