@@ -8,8 +8,7 @@ export default function DayStat({
 	part2RealExpected,
 	part2RealCalculated,
 }) {
-	
-    const displayValues = [
+	const displayValues = [
 		{
 			label: "part 1",
 			sampleValue: part1SampleCalculated,
@@ -27,9 +26,12 @@ export default function DayStat({
 	];
 
 	return (
-		<div className="grid grid-cols-3 gap-1 text-center">
-			<div className="col-start-2">Sample</div>
-			<div>Real</div>
+		<div className="text-center">
+			<div class="flex">
+				<div class="w-1/5"></div>
+				<div className="w-2/5">Sample</div>
+				<div className="w-2/5">Real</div>
+			</div>
 
 			{displayValues.map((p, i) => {
 				return <PartRow {...p} key={i} />;
@@ -45,12 +47,12 @@ function PartRow({
 	realExpected,
 	realValue,
 }) {
-    const classes = {
-		passing: "p-1 rounded-md bg-green-500",
-		failing: "p-1 rounded-md bg-red-400",
-		unknown: "p-1 rounded-md bg-neutral-200",
+	const classes = {
+		passing: "w-2/5 p-1 m-1 rounded-md bg-green-500",
+		failing: "w-2/5 p-1 m-1 rounded-md bg-red-400",
+		unknown: "w-2/5 p-1 m-1 rounded-md bg-neutral-200",
 	};
-    
+
 	const determineClass = (expected, calculated) => {
 		if (!!calculated) {
 			return expected == calculated ? classes.passing : classes.failing;
@@ -61,6 +63,7 @@ function PartRow({
 
 	const sampleClass = determineClass(sampleExpected, sampleValue);
 	const realClass = determineClass(realExpected, realValue);
+	const labelClass = "w-1/5 m-1 text-right";
 
 	const sampleText =
 		sampleExpected == sampleValue
@@ -71,10 +74,10 @@ function PartRow({
 			? realValue
 			: realValue + " (expected " + realExpected + ")";
 	return (
-		<>
-			<div>{label}</div>
+		<div class="flex">
+			<div className={labelClass}>{label}:</div>
 			<div className={sampleClass}>{sampleText}</div>
 			<div className={realClass}>{realText}</div>
-		</>
+		</div>
 	);
 }
