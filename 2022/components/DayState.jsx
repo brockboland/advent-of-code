@@ -10,14 +10,14 @@ export default function DayStat({
 }) {
 	const displayValues = [
 		{
-			label: "part 1",
+			label: "p1",
 			sampleValue: part1SampleCalculated,
 			realValue: part1RealCalculated,
 			sampleExpected: part1SampleExpected,
 			realExpected: part1RealExpected,
 		},
 		{
-			label: "part 2",
+			label: "p2",
 			sampleValue: part2SampleCalculated,
 			realValue: part2RealCalculated,
 			sampleExpected: part2SampleExpected,
@@ -29,8 +29,8 @@ export default function DayStat({
 		<div className="text-center">
 			<div class="flex">
 				<div class="w-1/5"></div>
-				<div className="w-2/5">Sample</div>
-				<div className="w-2/5">Real</div>
+				<div className="w-2/5">ex</div>
+				<div className="w-2/5">real</div>
 			</div>
 
 			{displayValues.map((p, i) => {
@@ -50,7 +50,7 @@ function PartRow({
 	const classes = {
 		passing: "w-2/5 p-1 m-1 rounded-md bg-green-500",
 		failing: "w-2/5 p-1 m-1 rounded-md bg-red-400",
-		unknown: "w-2/5 p-1 m-1 rounded-md bg-neutral-200",
+		unknown: "w-2/5 p-1 m-1 rounded-md bg-yellow-100",
 	};
 
 	const determineClass = (expected, calculated) => {
@@ -68,11 +68,11 @@ function PartRow({
 	const sampleText =
 		sampleExpected == sampleValue
 			? sampleValue
-			: sampleValue + " (expected " + sampleExpected + ")";
+			: sampleValue + " (not " + sampleExpected + ")";
 	const realText =
 		realExpected == realValue
 			? realValue
-			: realValue + " (expected " + realExpected + ")";
+			: realValue + " (not " + realExpected + ")";
 	return (
 		<div class="flex">
 			<div className={labelClass}>{label}:</div>

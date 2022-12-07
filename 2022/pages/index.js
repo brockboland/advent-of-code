@@ -1,4 +1,5 @@
 import Head from "next/head";
+import DayStat from "../components/DayState";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
@@ -11,13 +12,24 @@ export default function Home() {
 		days.push(d)
 	}
 
+	let finalDetails = {
+		part1SampleExpected: "Unknown",
+		part1SampleCalculated: 0,
+		part1RealExpected: "Unknown",
+		part1RealCalculated: 0,
+		part2SampleExpected: "Unknown",
+		part2SampleCalculated: 0,
+		part2RealExpected: "Unknown",
+		part2RealCalculated: 0,
+	};
+
 	return (
 		<div>
 			<Head>
 				<title>Advent of Code 2022</title>
 			</Head>
 
-			<main className="flex min-h-screen mx-auto max-w-3xl flex-col justify-center">
+			<main className="flex min-h-screen mx-auto flex-col justify-center">
 				<h1 className={styles.title}>Advent of Code 2022</h1>
 
 				<div className="calendar basis-full text-center">
@@ -32,7 +44,8 @@ export default function Home() {
 						<div className={day1Classes}>1</div>
 						{days.map((d, i) => {
 							const link = "/day/" + d;
-							return <div className={dayClasses} key={i}><a href={link}>{d}</a></div>
+							return <DayStat {...finalDetails} key={i} />
+							// return <div className={dayClasses} key={i}><a href={link}>{d}</a></div>
 						})}
 					</div>
 				</div>
