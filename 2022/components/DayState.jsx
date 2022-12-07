@@ -27,8 +27,8 @@ export default function DayStat({
 
 	return (
 		<div className="text-center">
-			<div class="flex">
-				<div class="w-1/5"></div>
+			<div className="flex">
+				<div className="w-1/5"></div>
 				<div className="w-2/5">ex</div>
 				<div className="w-2/5">real</div>
 			</div>
@@ -74,7 +74,7 @@ function PartRow({
 			? realValue
 			: realValue + " (not " + realExpected + ")";
 	return (
-		<div class="flex">
+		<div className="flex">
 			<div className={labelClass}>{label}:</div>
 			<div className={sampleClass}>{sampleText}</div>
 			<div className={realClass}>{realText}</div>
