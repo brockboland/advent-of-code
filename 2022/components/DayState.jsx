@@ -26,8 +26,6 @@ export default function DayStat({
 		},
 	];
 
-	console.log(displayValues);
-
 	return (
 		<div className="grid grid-cols-3 gap-1 text-center">
 			<div className="col-start-2">Sample</div>
