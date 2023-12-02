@@ -1,6 +1,5 @@
 package days;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -17,15 +16,29 @@ public class Day01 extends DayRunner {
         new Day01().run();
     }
 
+    private static final Map<String, Integer> numberStrings;
+    static {
+        Map<String, Integer> aMap = new HashMap<>();
+        aMap.put("one", 1);
+        aMap.put("two", 2);
+        aMap.put("three", 3);
+        aMap.put("four", 4);
+        aMap.put("five", 5);
+        aMap.put("six", 6);
+        aMap.put("seven", 7);
+        aMap.put("eight", 8);
+        aMap.put("nine", 9);
+        numberStrings = Collections.unmodifiableMap(aMap);
+    }
+
     // 55123
     public String part1(List<String> fileLines) {
         int totalScore = 0;
         for (String string : fileLines) {
-        String numbersOnly = string.replaceAll("[^0-9]", "");
-        String twoDigits = String.format("%c%c", numbersOnly.charAt(0),
-        numbersOnly.charAt(numbersOnly.length() - 1));
-        int lineValue = Integer.valueOf(twoDigits).intValue();
-        totalScore += lineValue;
+            String numbersOnly = string.replaceAll("[^0-9]", "");
+            String twoDigits = String.format("%c%c", numbersOnly.charAt(0),
+                    numbersOnly.charAt(numbersOnly.length() - 1));
+            totalScore += Integer.valueOf(twoDigits).intValue();
         }
         return String.valueOf(totalScore);
     }
@@ -34,12 +47,8 @@ public class Day01 extends DayRunner {
     public String part2(List<String> fileLines) {
         int totalScore = 0;
         for (String string : fileLines) {
-            int first = firstDigit(string);
-            int last = lastDigit(string);
-            String twoDigits = String.format("%d%d", first, last);
-            // System.out.println(string + " became " + twoDigits);
-            int lineValue = Integer.valueOf(twoDigits).intValue();
-            totalScore += lineValue;
+            String twoDigits = String.format("%d%d", firstDigit(string), lastDigit(string));
+            totalScore += Integer.valueOf(twoDigits).intValue();
         }
         return String.valueOf(totalScore);
     }
@@ -51,34 +60,22 @@ public class Day01 extends DayRunner {
             return 0;
         }
 
+        // Check if the first character is a digit
         String first = input.substring(0, 1).replaceAll("[^0-9]", "");
         if (first.length() > 0) {
             return Integer.valueOf(first).intValue();
         }
 
-        if (input.startsWith("one")) {
-            return 1;
-        } else if (input.startsWith("two")) {
-            return 2;
-        } else if (input.startsWith("three")) {
-            return 3;
-        } else if (input.startsWith("four")) {
-            return 4;
-        } else if (input.startsWith("five")) {
-            return 5;
-        } else if (input.startsWith("six")) {
-            return 6;
-        } else if (input.startsWith("seven")) {
-            return 7;
-        } else if (input.startsWith("eight")) {
-            return 8;
-        } else if (input.startsWith("nine")) {
-            return 9;
-        } else {
-            return firstDigit(input.substring(1));
+        // Does not start with a digit: check if it starts with a number word
+        for (Map.Entry<String, Integer> entry : numberStrings.entrySet()) {
+            if (input.startsWith(entry.getKey())) {
+                return entry.getValue();
+            }
         }
-    }
 
+        // Does not start with either: check starting at the next character
+        return firstDigit(input.substring(1));
+    }
 
     private int lastDigit(String input) {
         // This shouldn't happen, with valid input
@@ -87,35 +84,25 @@ public class Day01 extends DayRunner {
             return 0;
         }
 
-        String last = input.substring(input.length()-1).replaceAll("[^0-9]", "");
+        // Check if the current input ends with a digit
+        String last = input.substring(input.length() - 1).replaceAll("[^0-9]", "");
         if (last.length() > 0) {
             return Integer.valueOf(last).intValue();
         }
 
-        if (input.length() >= 3 && input.substring(input.length()-3).equals("one")) {
-            return 1;
-        } else if (input.length() >= 3 && input.substring(input.length()-3).equals("two")) {
-            return 2;
-        } else if (input.length() >= 5 && input.substring(input.length()-5).equals("three")) {
-            return 3;
-        } else if (input.length() >= 4 && input.substring(input.length()-4).equals("four")) {
-            return 4;
-        } else if (input.length() >= 4 && input.substring(input.length()-4).equals("five")) {
-            return 5;
-        } else if (input.length() >= 3 && input.substring(input.length()-3).equals("six")) {
-            return 6;
-        } else if (input.length() >= 5 && input.substring(input.length()-5).equals("seven")) {
-            return 7;
-        } else if (input.length() >= 5 && input.substring(input.length()-5).equals("eight")) {
-            return 8;
-        } else if (input.length() >= 4 && input.substring(input.length()-4).equals("nine")) {
-            return 9;
-        } else {
-            return lastDigit(input.substring(0, input.length()-1));
-        }
-    }
+        // Does not end with a digit: check if it ends with a word for a number
+        for (Map.Entry<String, Integer> entry : numberStrings.entrySet()) {
+            String numString = entry.getKey();
 
-    
-    
+            if (input.length() >= numString.length()
+                    && input.substring(input.length() - numString.length()).equals(numString)) {
+                return entry.getValue().intValue();
+            }
+        }
+
+        // Does not end with either: strip the last character and try again
+        return lastDigit(input.substring(0, input.length() - 1));
+
+    }
 
 }
