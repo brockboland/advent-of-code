@@ -122,7 +122,6 @@ public class Day03 extends DayRunner {
     public String part2(List<String> fileLines) {
         List<MachineRow> rows = parseRows(fileLines);
 
-        List<MachineSymbol> validGears = new ArrayList<>();
         int totalGearRatios = 0;
 
         for (int i = 0; i < rows.size(); i++) {

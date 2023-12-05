@@ -1,5 +1,7 @@
 package common;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class DayRunner {
@@ -46,8 +48,8 @@ public abstract class DayRunner {
      * Shared logic
      */
 
-    private final List<String> inputFileLines;
-    private final List<String> sampleInputFileLines;
+    private List<String> inputFileLines;
+    private List<String> sampleInputFileLines;
 
     private final int day;
 
@@ -56,9 +58,19 @@ public abstract class DayRunner {
     }
 
     public DayRunner(int dayNumber) {
-        inputFileLines = FileUtils.contentsFromFullInput(dayNumber);
+        try {
+            inputFileLines = FileUtils.contentsFromFullInput(dayNumber);
+        } catch (IOException e) {
+            System.err.println("Input file load failed:");
+            e.printStackTrace();
+        }
 
-        sampleInputFileLines = FileUtils.contentsFromSampleInput(dayNumber);
+        try {
+            sampleInputFileLines = FileUtils.contentsFromSampleInput(dayNumber);
+        } catch (IOException e) {
+            // No sample file: that's OK
+            sampleInputFileLines = new ArrayList<>();
+        }
         day = dayNumber;
     }
 
