@@ -31,7 +31,10 @@ public class Day01 extends DayRunner {
         numberStrings = Collections.unmodifiableMap(aMap);
     }
 
-    // 55123
+    @Override
+    public String part1ExpectedOutput() {
+        return "55123";
+    }
     public String part1(List<String> fileLines) {
         int totalScore = 0;
         for (String string : fileLines) {
@@ -43,7 +46,10 @@ public class Day01 extends DayRunner {
         return String.valueOf(totalScore);
     }
 
-    // 55260
+    @Override
+    public String part2ExpectedOutput() {
+        return "55260";
+    }
     public String part2(List<String> fileLines) {
         int totalScore = 0;
         for (String string : fileLines) {

@@ -78,7 +78,10 @@ public class Day03 extends DayRunner {
         }
     }
 
-    // 533784
+    @Override
+    public String part1ExpectedOutput() {
+        return "533784";
+    }
     public String part1(List<String> fileLines) {
         List<MachineRow> rows = parseRows(fileLines);
 
@@ -111,7 +114,11 @@ public class Day03 extends DayRunner {
         return String.valueOf(sum);
     }
 
-    // 78826761
+    @Override
+    public String part2ExpectedOutput() {
+        return "78826761";
+    }
+
     public String part2(List<String> fileLines) {
         List<MachineRow> rows = parseRows(fileLines);
 
@@ -151,7 +158,7 @@ public class Day03 extends DayRunner {
             }
         }
 
-        return String.format("Gear ratio:%n%d", totalGearRatios);
+        return String.valueOf(totalGearRatios);
     }
 
     private List<MachineRow> parseRows(List<String> fileLines) {

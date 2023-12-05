@@ -22,7 +22,10 @@ public class Day02 extends DayRunner {
         new Day02().run();
     }
 
-    // 3099
+    @Override
+    public String part1ExpectedOutput() {
+        return "3099";
+    }
     public String part1(List<String> fileLines) {
         int maxRed = 12;
         int maxGreen = 13;
@@ -58,7 +61,10 @@ public class Day02 extends DayRunner {
         return String.valueOf(sumOfPossibleGames);
     }
 
-    // 72970
+    @Override
+    public String part2ExpectedOutput() {
+        return "72970";
+    }
     public String part2(List<String> fileLines) {
         int sumOfPowers = 0;
 

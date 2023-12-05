@@ -88,7 +88,11 @@ public class Day04 extends DayRunner {
         new Day04().run();
     }
 
-    // 23750
+    @Override
+    public String part1ExpectedOutput() {
+        return "23750";
+    }
+
     public String part1(List<String> fileLines) {
         CardCollection collection = new CardCollection(fileLines);
 
@@ -100,7 +104,11 @@ public class Day04 extends DayRunner {
         return String.valueOf(runningTotal);
     }
 
-    // 13261850
+    @Override
+    public String part2ExpectedOutput() {
+        return "13261850";
+    }
+
     public String part2(List<String> fileLines) {
         CardCollection collection = new CardCollection(fileLines);
 
