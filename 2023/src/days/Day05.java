@@ -88,7 +88,8 @@ public class Day05 extends DayRunner {
 
                     sectionMaps.add(new MappedRange(nextLine));
                 }
-                // Make sure the last section gets added, when we break out of the while on the last line
+                // Make sure the last section gets added, when we break out of the while on the
+                // last line
                 mapSections.add(new GardenMap(mapName, sectionMaps));
             }
         }
@@ -134,17 +135,38 @@ public class Day05 extends DayRunner {
 
     @Override
     public String part2SampleExpectedOutput() {
-        return "";
+        return "46";
     }
 
     @Override
     public String part2ExpectedOutput() {
         // Replace this once we know the answer
-        return "";
+        return "72263011";
     }
 
     public String part2(List<String> inputFileLines) {
-        return "TODO part 2";
+        IslandAlmanac almanac = new IslandAlmanac(inputFileLines);
+
+        // THIS ASSUMES THE MAPS ARE PROVIDED IN ORDER
+        Long lowestLocation = Long.MAX_VALUE;
+
+        for (int i = 0; i < almanac.startingSeeds.size(); i += 2) {
+            Long start = almanac.startingSeeds.get(i);
+            Long length = almanac.startingSeeds.get(i + 1);
+
+            for (Long adder = 0L; adder < length; adder++) {
+                Long value = start + adder;
+                // System.out.println("Starting with seed " + value);
+                for (GardenMap map : almanac.mapSections) {
+                    value = map.mapForward(value);
+                }
+                // System.out.println("Final location: " + value);
+                // System.out.println("");
+                lowestLocation = Long.min(value, lowestLocation);
+            }
+        }
+
+        return lowestLocation.toString();
     }
 
 }
