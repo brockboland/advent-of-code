@@ -9,14 +9,22 @@ public abstract class DayRunner {
      */
 
     public abstract String part1(List<String> inputFileLines);
+
     public abstract String part2(List<String> inputFileLines);
 
-    // Replace this (without calling super) in implementation classes
+    // Replace these (without calling super) in implementation classes
+    public String part1SampleExpectedOutput() {
+        return "";
+    }
+
     public String part1ExpectedOutput() {
         return "";
     }
 
-    // Replace this (without calling super) in implementation classes
+    public String part2SampleExpectedOutput() {
+        return "";
+    }
+
     public String part2ExpectedOutput() {
         return "";
     }
@@ -38,9 +46,10 @@ public abstract class DayRunner {
      * Shared logic
      */
 
-     private final List<String> inputFileLines;
+    private final List<String> inputFileLines;
+    private final List<String> sampleInputFileLines;
 
-     private final int day;
+    private final int day;
 
     public DayRunner() {
         this(0);
@@ -48,47 +57,39 @@ public abstract class DayRunner {
 
     public DayRunner(int dayNumber) {
         inputFileLines = FileUtils.contentsFromFullInput(dayNumber);
+
+        sampleInputFileLines = FileUtils.contentsFromSampleInput(dayNumber);
         day = dayNumber;
     }
 
     public void run() {
-        String resultColor = ANSI_RESET;
-        System.out.println(ANSI_RESET);
-
         System.out.println(String.format(" -- DAY %d --", day));
 
-        // PART 1
+        String expectedSample1 = part1SampleExpectedOutput();
+        if (expectedSample1.length() > 0) {
+            partialResultOutput("Part 1 Sample", expectedSample1, part1(sampleInputFileLines));
+        }
+        partialResultOutput("Part 1", part1ExpectedOutput(), part1(inputFileLines));
 
-        String part1Result = part1(inputFileLines);
-        System.out.println(ANSI_BLUE + "Part 1 result:");
-        if (part1ExpectedOutput().equals("")) {
+        String expectedSample2 = part2SampleExpectedOutput();
+        if (expectedSample2.length() > 0) {
+            partialResultOutput("Part 2 Sample", expectedSample2, part2(sampleInputFileLines));
+        }
+        partialResultOutput("Part 2", part2ExpectedOutput(), part2(inputFileLines));
+    }
+
+    private void partialResultOutput(String section, String expectedResult, String actualResult) {
+        String resultColor = ANSI_RESET;
+        System.out.println(ANSI_BLUE + section + " result:");
+        if (expectedResult.equals("")) {
             resultColor = ANSI_YELLOW;
-        } else if (part1ExpectedOutput().equals(part1Result)) {
+        } else if (expectedResult.equals(actualResult)) {
             resultColor = ANSI_GREEN;
         } else {
             resultColor = ANSI_RED;
-            part1Result = part1Result + ", expected: " + part1ExpectedOutput();
+            actualResult = String.format("%s, expected:%n%s", actualResult, expectedResult);
         }
-        System.out.println(resultColor + part1Result);
-
-        System.out.println(ANSI_RESET);
-
-        
-        // PART 2
-
-        String part2Result = part2(inputFileLines);
-        System.out.println(ANSI_BLUE + "Part 2 result:");
-        if (part2ExpectedOutput().equals("")) {
-            resultColor = ANSI_YELLOW;
-        } else if (part2ExpectedOutput().equals(part2Result)) {
-            resultColor = ANSI_GREEN;
-        } else {
-            resultColor = ANSI_RED;
-            part2Result = String.format("%s, expected:%n%s", part2Result, part2ExpectedOutput());
-        }
-        System.out.println(resultColor + part2Result);
-
-
+        System.out.println(resultColor + actualResult);
         System.out.println(ANSI_RESET);
     }
 }

@@ -19,6 +19,11 @@ public class DayTemplate extends DayRunner {
      */
 
     @Override
+    public String part1SampleExpectedOutput() {
+        return "";
+    }
+
+    @Override
     public String part1ExpectedOutput() {
         // Replace this once we know the answer
         return "";
@@ -31,6 +36,11 @@ public class DayTemplate extends DayRunner {
     /**
      ********** PART 2
      */
+
+    @Override
+    public String part2SampleExpectedOutput() {
+        return "";
+    }
 
     @Override
     public String part2ExpectedOutput() {

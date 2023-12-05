@@ -43,12 +43,14 @@ public class Day04 extends DayRunner {
             this.cardNumber = Integer.valueOf(cardNumberString.replaceAll("[^0-9]", ""));
 
             for (String n : myNumbersAsStrings) {
-                if (n.trim().isEmpty()) continue;
+                if (n.trim().isEmpty())
+                    continue;
                 this.myNumbers.add(Integer.valueOf(n.trim()));
             }
 
             for (String n : winnersAsStrings) {
-                if (n.trim().isEmpty()) continue;
+                if (n.trim().isEmpty())
+                    continue;
                 this.winningNumbers.add(Integer.valueOf(n.trim()));
             }
         }
@@ -69,14 +71,17 @@ public class Day04 extends DayRunner {
         public int score() {
             int s = 0;
             for (int i = 0; i < numberOfMatchingNumbers(); i++) {
-                if (s == 0) s = 1;
-                else s *= 2;
+                if (s == 0)
+                    s = 1;
+                else
+                    s *= 2;
             }
             return s;
         }
 
         public String toString() {
-            return String.format("Card %s: winers are %s, mine are %s. Score %d, on %d matches", cardNumber, winningNumbers, myNumbers, this.score(), this.numberOfMatchingNumbers());
+            return String.format("Card %s: winers are %s, mine are %s. Score %d, on %d matches", cardNumber,
+                    winningNumbers, myNumbers, this.score(), this.numberOfMatchingNumbers());
         }
     }
 
@@ -86,6 +91,11 @@ public class Day04 extends DayRunner {
 
     public static void main(String[] args) {
         new Day04().run();
+    }
+
+    @Override
+    public String part1SampleExpectedOutput() {
+        return "13";
     }
 
     @Override
@@ -105,6 +115,11 @@ public class Day04 extends DayRunner {
     }
 
     @Override
+    public String part2SampleExpectedOutput() {
+        return "30";
+    }
+
+    @Override
     public String part2ExpectedOutput() {
         return "13261850";
     }
@@ -118,9 +133,10 @@ public class Day04 extends DayRunner {
 
             for (int i = 1; i <= matches; i++) {
                 Integer nextCardNumber = Integer.valueOf(card.cardNumber.intValue() + i);
-                
+
                 Integer existingCopies = collection.countOfCopies.get(nextCardNumber);
-                // Add a copy for the match in the original card, plus a copy for each copy of the original card
+                // Add a copy for the match in the original card, plus a copy for each copy of
+                // the original card
                 Integer newNumberOfCopies = Integer.valueOf(existingCopies.intValue() + 1 + copiesOfThisCard);
                 collection.countOfCopies.put(nextCardNumber, newNumberOfCopies);
             }
