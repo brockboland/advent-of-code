@@ -77,17 +77,19 @@ public abstract class DayRunner {
     public void run() {
         System.out.println(String.format(" -- DAY %d --", day));
 
-        String expectedSample1 = part1SampleExpectedOutput();
-        if (expectedSample1.length() > 0) {
-            partialResultOutput("Part 1 Sample", expectedSample1, part1(sampleInputFileLines));
+        if (sampleInputFileLines.size() > 0 && part1SampleExpectedOutput().length() > 0) {
+            partialResultOutput("Part 1 Sample", part1SampleExpectedOutput(), part1(sampleInputFileLines));
         }
-        partialResultOutput("Part 1", part1ExpectedOutput(), part1(inputFileLines));
+        if (inputFileLines.size() > 0) {
+            partialResultOutput("Part 1", part1ExpectedOutput(), part1(inputFileLines));
+        }
 
-        String expectedSample2 = part2SampleExpectedOutput();
-        if (expectedSample2.length() > 0) {
-            partialResultOutput("Part 2 Sample", expectedSample2, part2(sampleInputFileLines));
+        if (sampleInputFileLines.size() > 0 && part2SampleExpectedOutput().length() > 0) {
+            partialResultOutput("Part 2 Sample", part2SampleExpectedOutput(), part2(sampleInputFileLines));
         }
-        partialResultOutput("Part 2", part2ExpectedOutput(), part2(inputFileLines));
+        if (inputFileLines.size() > 0) {
+            partialResultOutput("Part 2", part2ExpectedOutput(), part2(inputFileLines));
+        }
     }
 
     private void partialResultOutput(String section, String expectedResult, String actualResult) {
