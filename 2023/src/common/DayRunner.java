@@ -3,6 +3,7 @@ package common;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 public abstract class DayRunner {
 
@@ -78,32 +79,43 @@ public abstract class DayRunner {
         System.out.println(String.format(" -- DAY %d --", day));
 
         if (sampleInputFileLines.size() > 0 && part1SampleExpectedOutput().length() > 0) {
-            partialResultOutput("Part 1 Sample", part1SampleExpectedOutput(), part1(sampleInputFileLines));
+            outputResultsForPart("Part 1 Sample", part1SampleExpectedOutput(), sampleInputFileLines, this::part1);
         }
         if (inputFileLines.size() > 0) {
-            partialResultOutput("Part 1", part1ExpectedOutput(), part1(inputFileLines));
+            outputResultsForPart("Part 1", part1ExpectedOutput(), inputFileLines, this::part1);
         }
 
         if (sampleInputFileLines.size() > 0 && part2SampleExpectedOutput().length() > 0) {
-            partialResultOutput("Part 2 Sample", part2SampleExpectedOutput(), part2(sampleInputFileLines));
+            outputResultsForPart("Part 2 Sample", part2SampleExpectedOutput(), sampleInputFileLines, this::part2);
         }
         if (inputFileLines.size() > 0) {
-            partialResultOutput("Part 2", part2ExpectedOutput(), part2(inputFileLines));
+            outputResultsForPart("Part 2", part2ExpectedOutput(), inputFileLines, this::part2);
         }
     }
 
-    private void partialResultOutput(String section, String expectedResult, String actualResult) {
-        String resultColor = ANSI_RESET;
-        System.out.println(ANSI_BLUE + section + " result:");
+
+    private void outputResultsForPart(String partTitle, String expectedResult, List<String> input, Function<List<String>, String> method) {
+        System.out.println(String.format("%sBeginning %s…", ANSI_BLUE, partTitle));
+        
+        final long startNanos = System.nanoTime();
+        String actualResult = method.apply(input);
+        final double runtimeSeconds = 1e-9d * (double)(System.nanoTime() - startNanos);
+
+        String resultOutput = String.format("Finished in %1$,.4f seconds%n", runtimeSeconds);
+
         if (expectedResult.equals("")) {
-            resultColor = ANSI_YELLOW;
+            resultOutput += ANSI_YELLOW;
+            resultOutput += actualResult;
         } else if (expectedResult.equals(actualResult)) {
-            resultColor = ANSI_GREEN;
+            resultOutput += ANSI_GREEN;
+            resultOutput += actualResult;
         } else {
-            resultColor = ANSI_RED;
-            actualResult = String.format("%s, expected:%n%s", actualResult, expectedResult);
+            resultOutput += ANSI_RED;
+            resultOutput += String.format("Calculated: %s%nExpected:   %s", actualResult, expectedResult);
         }
-        System.out.println(resultColor + actualResult);
+
+        System.out.println(resultOutput);
+
         System.out.println(ANSI_RESET);
     }
 }
