@@ -30,6 +30,29 @@ public class Day08 extends DayRunner {
         return "14257";
     }
 
+    public class CamelMap {
+        char[] turns;
+        Map<String, Node> nodes;
+
+        public CamelMap(List<String> inputFileLines) {
+            turns = inputFileLines.get(0).toCharArray();
+
+            nodes = new HashMap<>();
+            for (int i = 2; i < inputFileLines.size(); i++) {
+                String[] parts = inputFileLines.get(i).split(" = ");
+                String nodeName = parts[0];
+                // Strip off the parens around the next steps
+                String[] next = parts[1].substring(1, parts[1].length() - 1).split(", ");
+                nodes.put(nodeName, new Node(next[0], next[1]));
+            }
+        }
+
+        @Override
+        public String toString() {
+            return String.format("Map. Turns:%n%s %nNodes:%n%s", new String(turns), nodes);
+        }
+    }
+
     public class Node {
         String left;
         String right;
@@ -46,33 +69,32 @@ public class Day08 extends DayRunner {
     }
 
     public class Navigator {
-        Map<String, Node> nodes;
-        char[] turns;
-
-        public Navigator(Map<String, Node> nodes, char[] turns) {
-            this.nodes = nodes;
-            this.turns = turns;
+        CamelMap map;
+        
+        public Navigator(CamelMap map) {
+            this.map = map;
         }
 
         @Override
         public String toString() {
-            return String.format("Navigator. Turns:%n%s %nNodes:%n%s", new String(turns), nodes);
+            return String.format("Navigator. Map:%n%s", map);
         }
 
         public int stepsToReachEnd(String currentPosition, int positionInTurns) {
             int steps = 0;
 
             do {
-                if (positionInTurns >= turns.length) {
+                if (positionInTurns >= map.turns.length) {
                     positionInTurns = 0;
                 }
-                char nextTurn = turns[positionInTurns];
+                char nextTurn = map.turns[positionInTurns];
 
-                // System.out.println(String.format("Moving %c from %s", nextTurn, currentPosition));
+                // System.out.println(String.format("Moving %c from %s", nextTurn,
+                // currentPosition));
                 if (nextTurn == 'L') {
-                    currentPosition = nodes.get(currentPosition).left;
+                    currentPosition = map.nodes.get(currentPosition).left;
                 } else {
-                    currentPosition = nodes.get(currentPosition).right;
+                    currentPosition = map.nodes.get(currentPosition).right;
                 }
 
                 positionInTurns++;
@@ -80,25 +102,33 @@ public class Day08 extends DayRunner {
             } while (!currentPosition.equals("ZZZ"));
             return steps;
         }
+
+        public String nextStep(String currentPosition, long positionInTurns) {
+            int turnIndex = (int) (positionInTurns % map.turns.length);
+            char nextTurn = map.turns[turnIndex];
+
+            // System.out.println(String.format("Moving %c from %s", nextTurn,
+            // currentPosition));
+            if (nextTurn == 'L') {
+                return map.nodes.get(currentPosition).left;
+            } else {
+                return map.nodes.get(currentPosition).right;
+            }
+        }
     }
 
     public String part1(List<String> inputFileLines) {
-        char[] turns = inputFileLines.get(0).toCharArray();
+        CamelMap map = new CamelMap(inputFileLines);
+        Navigator nav = new Navigator(map);
+        String position = "AAA";
+        long stepsTaken = 0;
 
-        Map<String, Node> nodes = new HashMap<>();
-        for (int i = 2; i < inputFileLines.size(); i++) {
-            String[] parts = inputFileLines.get(i).split(" = ");
-            String nodeName = parts[0];
-            // Strip off the parens around the next steps
-            String[] next = parts[1].substring(1, parts[1].length() - 1).split(", ");
-            nodes.put(nodeName, new Node(next[0], next[1]));
-        }
+        do {
+            position = nav.nextStep(position, stepsTaken);
+            stepsTaken++;
+        } while (!position.equals("ZZZ"));
 
-        Navigator nav = new Navigator(nodes, turns);
-        // System.out.println(nav);
-        int turnsToWin = nav.stepsToReachEnd("AAA", 0);
-
-        return String.valueOf(turnsToWin);
+        return String.valueOf(stepsTaken);
     }
 
     /**
