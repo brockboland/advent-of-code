@@ -33,20 +33,23 @@ public class Day09 extends DayRunner {
             }
         }
 
-        public Integer nextValue() {
+        public Integer projectedValue(boolean forward) {
             boolean allZeroes = false;
             List<Integer> workingList = values;
-            List<Integer> trailingValues = new ArrayList<>();
+            List<Integer> derivedValues = new ArrayList<>();
 
             do {
-                // System.out.println(String.format("Checking: %s", workingList));
                 List<Integer> newList = new ArrayList<>();
                 for (int i = 0; i < workingList.size() - 1; i++) {
                     newList.add(workingList.get(i + 1) - workingList.get(i));
                 }
 
-                // Hang on to the last one
-                trailingValues.add(workingList.get(workingList.size() - 1));
+                // Hang on to the first or last one
+                if (forward) {
+                    derivedValues.add(workingList.get(workingList.size() - 1));
+                } else {
+                    derivedValues.add(workingList.get(0));
+                }
 
                 Set<Integer> valuesInNewList = new HashSet<>(newList);
                 allZeroes = valuesInNewList.size() == 1 && valuesInNewList.contains(Integer.valueOf(0));
@@ -54,58 +57,21 @@ public class Day09 extends DayRunner {
             } while (!allZeroes);
 
             // Add that final zero from the last diff
-            trailingValues.add(Integer.valueOf(0));
+            derivedValues.add(Integer.valueOf(0));
 
             // prep a new holding list
-            Integer[] temp = new Integer[trailingValues.size()];
+            Integer[] temp = new Integer[derivedValues.size()];
             Arrays.fill(temp,Integer.valueOf(0));
-            List<Integer> projectedTrailingValues = Arrays.asList(temp);
+            List<Integer> projectedValues = Arrays.asList(temp);
 
-            for (int i = trailingValues.size()-2; i >= 0; i--) {
-                // System.out.println(String.format("Trialing %d: %s + %s", i, trailingValues.get(i), projectedTrailingValues.get(i+1)));
-                projectedTrailingValues.set(i, trailingValues.get(i) + projectedTrailingValues.get(i+1));
-            }
-
-            // System.out.println(String.format("Tailing numbers: %s, projected %s%n", trailingValues, projectedTrailingValues));
-            return projectedTrailingValues.get(0);
-        }
-
-        public Integer previousValue() {
-
-            boolean allZeroes = false;
-            List<Integer> workingList = values;
-            List<Integer> leadingValues = new ArrayList<>();
-
-            do {
-                // System.out.println(String.format("Checking: %s", workingList));
-                List<Integer> newList = new ArrayList<>();
-                for (int i = 0; i < workingList.size() - 1; i++) {
-                    newList.add(workingList.get(i + 1) - workingList.get(i));
+            for (int i = derivedValues.size()-2; i >= 0; i--) {
+                if (forward) {
+                    projectedValues.set(i, derivedValues.get(i) + projectedValues.get(i+1));
+                } else {
+                    projectedValues.set(i, derivedValues.get(i) - projectedValues.get(i+1));
                 }
-
-                // Hang on to the last one
-                leadingValues.add(workingList.get(0));
-
-                Set<Integer> valuesInNewList = new HashSet<>(newList);
-                allZeroes = valuesInNewList.size() == 1 && valuesInNewList.contains(Integer.valueOf(0));
-                workingList = newList;
-            } while (!allZeroes);
-
-            // Add that final zero from the last diff
-            leadingValues.add(Integer.valueOf(0));
-
-            // prep a new holding list
-            Integer[] temp = new Integer[leadingValues.size()];
-            Arrays.fill(temp,Integer.valueOf(0));
-            List<Integer> projectedLeadingValues = Arrays.asList(temp);
-
-            for (int i = leadingValues.size()-2; i >= 0; i--) {
-                // System.out.println(String.format("Leading %d: %s - %s", i, leadingValues.get(i), projectedLeadingValues.get(i+1)));
-                projectedLeadingValues.set(i, leadingValues.get(i) - projectedLeadingValues.get(i+1));
             }
-
-            // System.out.println(String.format("Leading numbers: %s, projected %s%n", leadingValues, projectedLeadingValues));
-            return projectedLeadingValues.get(0);
+            return projectedValues.get(0);
         }
 
     }
@@ -121,14 +87,13 @@ public class Day09 extends DayRunner {
 
     @Override
     public String part1ExpectedOutput() {
-        // Replace this once we know the answer
         return "1992273652";
     }
 
     public String part1(List<String> inputFileLines) {
         List<Reading> readings = inputFileLines.stream().map(s -> new Reading(s)).collect(Collectors.toList());
 
-        List<Integer> nextValues = readings.stream().map(r -> r.nextValue()).collect(Collectors.toList());
+        List<Integer> nextValues = readings.stream().map(r -> r.projectedValue(true)).collect(Collectors.toList());
 
         Integer answer = nextValues.stream().reduce(0, Integer::sum);
         return answer.toString();
@@ -145,14 +110,13 @@ public class Day09 extends DayRunner {
 
     @Override
     public String part2ExpectedOutput() {
-        // Replace this once we know the answer
         return "1012";
     }
 
     public String part2(List<String> inputFileLines) {
         List<Reading> readings = inputFileLines.stream().map(s -> new Reading(s)).collect(Collectors.toList());
 
-        List<Integer> previousValues = readings.stream().map(r -> r.previousValue()).collect(Collectors.toList());
+        List<Integer> previousValues = readings.stream().map(r -> r.projectedValue(false)).collect(Collectors.toList());
 
         Integer answer = previousValues.stream().reduce(0, Integer::sum);
         return answer.toString();
