@@ -34,7 +34,6 @@ public class Day09 extends DayRunner {
         }
 
         public Integer nextValue() {
-
             boolean allZeroes = false;
             List<Integer> workingList = values;
             List<Integer> trailingValues = new ArrayList<>();
@@ -71,6 +70,44 @@ public class Day09 extends DayRunner {
             return projectedTrailingValues.get(0);
         }
 
+        public Integer previousValue() {
+
+            boolean allZeroes = false;
+            List<Integer> workingList = values;
+            List<Integer> leadingValues = new ArrayList<>();
+
+            do {
+                // System.out.println(String.format("Checking: %s", workingList));
+                List<Integer> newList = new ArrayList<>();
+                for (int i = 0; i < workingList.size() - 1; i++) {
+                    newList.add(workingList.get(i + 1) - workingList.get(i));
+                }
+
+                // Hang on to the last one
+                leadingValues.add(workingList.get(0));
+
+                Set<Integer> valuesInNewList = new HashSet<>(newList);
+                allZeroes = valuesInNewList.size() == 1 && valuesInNewList.contains(Integer.valueOf(0));
+                workingList = newList;
+            } while (!allZeroes);
+
+            // Add that final zero from the last diff
+            leadingValues.add(Integer.valueOf(0));
+
+            // prep a new holding list
+            Integer[] temp = new Integer[leadingValues.size()];
+            Arrays.fill(temp,Integer.valueOf(0));
+            List<Integer> projectedLeadingValues = Arrays.asList(temp);
+
+            for (int i = leadingValues.size()-2; i >= 0; i--) {
+                // System.out.println(String.format("Leading %d: %s - %s", i, leadingValues.get(i), projectedLeadingValues.get(i+1)));
+                projectedLeadingValues.set(i, leadingValues.get(i) - projectedLeadingValues.get(i+1));
+            }
+
+            // System.out.println(String.format("Leading numbers: %s, projected %s%n", leadingValues, projectedLeadingValues));
+            return projectedLeadingValues.get(0);
+        }
+
     }
 
     /**
@@ -103,17 +140,22 @@ public class Day09 extends DayRunner {
 
     @Override
     public String part2SampleExpectedOutput() {
-        return "";
+        return "2";
     }
 
     @Override
     public String part2ExpectedOutput() {
         // Replace this once we know the answer
-        return "";
+        return "1012";
     }
 
     public String part2(List<String> inputFileLines) {
-        return "TODO part 2";
+        List<Reading> readings = inputFileLines.stream().map(s -> new Reading(s)).collect(Collectors.toList());
+
+        List<Integer> previousValues = readings.stream().map(r -> r.previousValue()).collect(Collectors.toList());
+
+        Integer answer = previousValues.stream().reduce(0, Integer::sum);
+        return answer.toString();
     }
 
 }
