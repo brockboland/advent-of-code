@@ -36,8 +36,8 @@ public class Grid {
     }
 
     public boolean rowContains(int y, char c) {
-        for (Character character : rows.get(y)) {
-            if (character.charValue() == c) {
+        for (int x = 0; x < columnCount(); x++) {
+            if (get(x, y).charValue() == c) {
                 return true;
             }
         }
@@ -45,12 +45,24 @@ public class Grid {
     }
 
     public boolean colContains(int x, char c) {
-        for (List<Character> row : rows) {
-            if (row.get(x).charValue() == c) {
+        for (int y = 0; y < rowCount(); y++) {
+            if (get(x, y).charValue() == c) {
                 return true;
             }
         }
         return false;
+    }
+
+    public List<Coord2D> findAll(char c) {
+        List<Coord2D> hits = new ArrayList<>();
+        for (int y = 0; y < rowCount(); y++) {
+            for (int x = 0; x < columnCount(); x++) {
+                if (get(x, y).charValue() == c) {
+                    hits.add(new Coord2D(x, y));
+                }
+            }
+        }
+        return hits;
     }
 
     public void insertRow(int newY, char fillWithChar) {

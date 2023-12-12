@@ -20,20 +20,36 @@ public class Coord2D {
         return this.y;
     }
 
+    public Coord2D moveUp(int amount) {
+        return new Coord2D(x, y - amount);
+    }
+
+    public Coord2D moveDown(int amount) {
+        return new Coord2D(x, y + amount);
+    }
+
+    public Coord2D moveRight(int amount) {
+        return new Coord2D(x+amount, y);
+    }
+
+    public Coord2D moveLeft(int amount) {
+        return new Coord2D(x-amount, y);
+    }
+
     public Coord2D up() {
-        return new Coord2D(x, y - 1);
+        return moveUp(1);
     }
 
     public Coord2D down() {
-        return new Coord2D(x, y + 1);
+        return moveDown(1);
     }
 
     public Coord2D left() {
-        return new Coord2D(x - 1, y);
+        return moveLeft(1);
     }
 
     public Coord2D right() {
-        return new Coord2D(x + 1, y);
+        return moveRight(1);
     }
 
     // Check if the other coordinate is in the 8 spots around this one
@@ -45,6 +61,10 @@ public class Coord2D {
 
     public boolean isEqualTo(Coord2D other) {
         return other.x() == x && other.y() == y;
+    }
+
+    public int stepsTo(Coord2D other) {
+        return Math.abs(x - other.x()) + Math.abs(y - other.y());
     }
 
     @Override
