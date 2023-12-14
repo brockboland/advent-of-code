@@ -17,8 +17,6 @@ public class Grid<T> {
         rows = new ArrayList<>();
 
         for (String s : input) {
-            // List<Character> chars = s.chars().mapToObj(i -> (char) i).map(c -> Character.valueOf(c))
-            //         .collect(Collectors.toList());
             List<T> row = s.chars().mapToObj(i -> (char) i).map(c -> Character.valueOf(c)).map(c -> builder.apply(c)).collect(Collectors.toList());
             rows.add(row);
         }
