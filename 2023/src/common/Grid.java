@@ -2,18 +2,24 @@ package common;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class Grid {
+public class Grid<T> {
 
-    private List<List<Character>> rows;
+    private List<List<T>> rows;
 
-    public Grid(List<String> input) {
+    interface ElementBuilder<T> {
+        T run(Character c);
+      }
+
+    public Grid(List<String> input, Function<Character, T> builder) {
         rows = new ArrayList<>();
 
         for (String s : input) {
-            List<Character> row = s.chars().mapToObj(i -> (char) i).map(c -> Character.valueOf(c))
-                    .collect(Collectors.toList());
+            // List<Character> chars = s.chars().mapToObj(i -> (char) i).map(c -> Character.valueOf(c))
+            //         .collect(Collectors.toList());
+            List<T> row = s.chars().mapToObj(i -> (char) i).map(c -> Character.valueOf(c)).map(c -> builder.apply(c)).collect(Collectors.toList());
             rows.add(row);
         }
     }
@@ -27,37 +33,37 @@ public class Grid {
     }
 
     // 0-indexed x and y
-    public Character get(int x, int y) {
+    public T get(int x, int y) {
         return rows.get(y).get(x);
     }
 
-    public Character get(Coord2D coord) {
+    public T get(Coord2D coord) {
         return get(coord.x(), coord.y());
     }
 
-    public boolean rowContains(int y, char c) {
+    public boolean rowContains(int y, T c) {
         for (int x = 0; x < columnCount(); x++) {
-            if (get(x, y).charValue() == c) {
+            if (get(x, y).equals(c)) {
                 return true;
             }
         }
         return false;
     }
 
-    public boolean colContains(int x, char c) {
+    public boolean colContains(int x, T c) {
         for (int y = 0; y < rowCount(); y++) {
-            if (get(x, y).charValue() == c) {
+            if (get(x, y).equals(c)) {
                 return true;
             }
         }
         return false;
     }
 
-    public List<Coord2D> findAll(char c) {
+    public List<Coord2D> findAll(T c) {
         List<Coord2D> hits = new ArrayList<>();
         for (int y = 0; y < rowCount(); y++) {
             for (int x = 0; x < columnCount(); x++) {
-                if (get(x, y).charValue() == c) {
+                if (get(x, y).equals(c)) {
                     hits.add(new Coord2D(x, y));
                 }
             }
@@ -65,26 +71,26 @@ public class Grid {
         return hits;
     }
 
-    public void insertRow(int newY, char fillWithChar) {
-        List<Character> newRow = new ArrayList<>();
+    public void insertRow(int newY, T fillValue) {
+        List<T> newRow = new ArrayList<>();
         for (int i = 0; i < columnCount(); i++) {
-            newRow.add(Character.valueOf(fillWithChar));
+            newRow.add(fillValue);
         }
         rows.add(newY, newRow);
     }
 
-    public void insertColumn(int newX, char fillWithChar) {
+    public void insertColumn(int newX, T fillValue) {
         for (int i = 0; i < rowCount(); i++) {
-            rows.get(i).add(newX, Character.valueOf(fillWithChar));
+            rows.get(i).add(newX, fillValue);
         }
     }
 
     @Override
     public String toString() {
         StringBuilder b = new StringBuilder();
-        for (List<Character> row : rows) {
-            for (Character character : row) {
-                b.append(character);
+        for (List<T> row : rows) {
+            for (T item : row) {
+                b.append(item.toString());
             }
             b.append(String.format("%n"));
         }
