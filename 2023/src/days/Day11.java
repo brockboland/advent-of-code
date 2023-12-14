@@ -2,6 +2,7 @@ package days;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import common.Coord2D;
@@ -17,22 +18,24 @@ public class Day11 extends DayRunner {
         super(11);
     }
 
-    public class Universe extends Grid {
+    public class Universe {
 
         public List<Coord2D> knownGalaxies;
+        public Grid<Character> grid;
 
         public Universe(List<String> input) {
-            super(input);
+            Function<Character, Character> boring = x -> x;
+            grid = new Grid<>(input, boring);
 
-            knownGalaxies = findAll('#');
+            knownGalaxies = grid.findAll(Character.valueOf('#'));
         }
 
         // Returns a list of column indices, in descending order
         private List<Integer> emptyColumns() {
             List<Integer> cols = new ArrayList<>();
             // Go right to left so indices work when expanding
-            for (int x = columnCount() - 1; x >= 0; x--) {
-                if (!colContains(x, '#')) {
+            for (int x = grid.columnCount() - 1; x >= 0; x--) {
+                if (!grid.colContains(x, Character.valueOf('#'))) {
                     cols.add(Integer.valueOf(x));
                     // System.out.println(String.format("Empty column: %d", x));
                 }
@@ -44,8 +47,8 @@ public class Day11 extends DayRunner {
         private List<Integer> emptyRows() {
             List<Integer> emptyRows = new ArrayList<>();
             // Go bottom to top so indices work when expanding
-            for (int y = rowCount() - 1; y >= 0; y--) {
-                if (!rowContains(y, '#')) {
+            for (int y = grid.rowCount() - 1; y >= 0; y--) {
+                if (!grid.rowContains(y, Character.valueOf('#'))) {
                     emptyRows.add(Integer.valueOf(y));
                     // System.out.println(String.format("Empty row: %d", y));
                 }
