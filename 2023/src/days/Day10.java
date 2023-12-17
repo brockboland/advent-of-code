@@ -52,19 +52,18 @@ public class Day10 extends DayRunner {
             int steps = 1;
             System.out.print("First move to " + currentPosition);
 
-            outer: while (!currentPosition.isEqualTo(startingPoint)) {
+            outer: while (!currentPosition.equals(startingPoint)) {
                 Set<Coord2D.Direction> moves = validMovesFromPosition(currentPosition);
                 for (Coord2D.Direction direction : moves) {
                     Coord2D potentialNextPosition = currentPosition.move(direction, 1);
                     // If this move would take us back to the last spot, skip it
-                    if (potentialNextPosition.isEqualTo(previousPosition)) {
+                    if (potentialNextPosition.equals(previousPosition)) {
                         continue;
                     }
                     // The other of the 2 possible moves is the one we should take
                     steps++;
                     previousPosition = currentPosition;
                     currentPosition = potentialNextPosition;
-                    // System.out.println(String.format("Step %d, moved from %s to %s", steps, previousPosition, currentPosition));
                     continue outer;
                 }
 
@@ -85,13 +84,9 @@ public class Day10 extends DayRunner {
                     Character neighborValue = grid.get(entry.getValue());
                     if (moveIsValid(thisPositionValue, direction, neighborValue)) {
                         directions.add(direction);
-                        // System.out.println(String.format("Move from %s to %s is VALID", thisPositionValue, neighborValue));
-                    // } else {
-                    //     System.out.println(String.format("Move from %s to %s is not valid", thisPositionValue, neighborValue));
                     }
                 } catch (Exception e) {
                     // We hit this if we try to get an invalid spot on the grid - like if we try to go left from the first column
-                    // System.out.println(String.format("Can't movef %s from %s", direction, position));
                 }
             }
 

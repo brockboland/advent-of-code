@@ -115,6 +115,12 @@ public class Coord2D {
         return other.x() == x && other.y() == y;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        Coord2D other = (Coord2D)obj;
+        return isEqualTo(other);
+    }
+
     public int stepsTo(Coord2D other) {
         return Math.abs(x - other.x()) + Math.abs(y - other.y());
     }
