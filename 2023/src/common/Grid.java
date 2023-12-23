@@ -39,6 +39,23 @@ public class Grid<T> {
         return get(coord.x(), coord.y());
     }
 
+    public void set(int x, int y, T newValue) {
+        if (x <= columnCount() && y <= rowCount()) {
+            rows.get(y).set(x, newValue);
+        }
+    }
+
+    public void set(Coord2D coord, T newValue) {
+        set(coord.x(), coord.y(), newValue);
+    }
+
+    public void swap(Coord2D point1, Coord2D point2) {
+        T first = get(point1);
+        T second = get(point2);
+        set(point1, second);
+        set(point2, first);
+    }
+
     public boolean rowContains(int y, T c) {
         for (int x = 0; x < columnCount(); x++) {
             if (get(x, y).equals(c)) {
