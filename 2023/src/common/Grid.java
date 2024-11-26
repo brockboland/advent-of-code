@@ -30,6 +30,14 @@ public class Grid<T> {
         return rows.size();
     }
 
+    public boolean isValidPosition(int x, int y) {
+        return (x >= 0 && x < columnCount() && y >= 0 && y < rowCount());   
+    }
+
+    public boolean isValidPosition(Coord2D coord) {
+        return isValidPosition(coord.x(), coord.y());
+    }
+
     // 0-indexed x and y
     public T get(int x, int y) {
         return rows.get(y).get(x);
@@ -40,7 +48,7 @@ public class Grid<T> {
     }
 
     public void set(int x, int y, T newValue) {
-        if (x <= columnCount() && y <= rowCount()) {
+        if (isValidPosition(x, y)) {
             rows.get(y).set(x, newValue);
         }
     }
@@ -110,5 +118,31 @@ public class Grid<T> {
             b.append(String.format("%n"));
         }
         return b.toString();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        // Make sure it's a grid
+        if (!(obj instanceof Grid)) {
+            return false;
+        }
+
+        Grid other = (Grid) obj;
+
+        // Make sure it's the same size
+        if (other.rowCount() != rowCount() || other.columnCount() != columnCount()) {
+            return false;
+        }
+
+        for (int y = 0; y < rowCount(); y++) {
+            for (int x = 0; x < columnCount(); x++) {
+                if (!get(x, y).equals(other.get(x, y))) {
+                    return false;
+                }
+            }
+        }
+
+        // If we got this far, it must be the same
+        return true;
     }
 }
