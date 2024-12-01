@@ -1,10 +1,3 @@
-//
-//  Day01.swift
-//  Advent of Code 2024
-//
-//  Created by Brock Boland on 11/25/24.
-//
-
 import Foundation
 
 struct Day01 {
