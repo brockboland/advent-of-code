@@ -11,11 +11,11 @@ import Testing
 struct Advent_of_Code_2024Tests {
 
     @Test func checkDay01() async throws {
-        #expect(Day01.Part1.exampleInput() == "142")
-        #expect(Day01.Part1.realInput() == "55123")
+        #expect(Day01.Part1.exampleInput() == "11")
+        #expect(Day01.Part1.realInput() == "3246517")
         
-        #expect(Day01.Part2.exampleInput() == "281")
-        #expect(Day01.Part2.realInput() == "55260")
+        #expect(Day01.Part2.exampleInput() == "31")
+        #expect(Day01.Part2.realInput() == "29379307")
     }
     
         

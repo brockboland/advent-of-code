@@ -18,7 +18,7 @@ struct Day00 {
         }
         
         static func realInput() -> String {
-            guard let contents = InputReader.contentsOf(filename: "00") else {
+            guard let contents = InputReader.contentsOf(filename: "00-actual") else {
                 return "Couldn't read input"
             }
             return part1Logic(input: contents)
@@ -40,7 +40,7 @@ struct Day00 {
         }
         
         static func realInput() -> String {
-            guard let contents = InputReader.contentsOf(filename: "00") else {
+            guard let contents = InputReader.contentsOf(filename: "00-actual") else {
                 return "Couldn't read input"
             }
             return part2Logic(input: contents)
