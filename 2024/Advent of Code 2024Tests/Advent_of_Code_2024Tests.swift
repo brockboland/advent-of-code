@@ -19,11 +19,11 @@ struct Advent_of_Code_2024Tests {
     }
     
     @Test func checkDay02() async throws {
-        #expect(Day02.Part1.exampleInput() == "0")
-        #expect(Day02.Part1.realInput() == "0")
+        #expect(Day02.Part1.exampleInput() == "2")
+        #expect(Day02.Part1.realInput() == "502")
         
-        #expect(Day02.Part2.exampleInput() == "0")
-        #expect(Day02.Part2.realInput() == "0")
+        #expect(Day02.Part2.exampleInput() == "4")
+        #expect(Day02.Part2.realInput() == "544")
     }
     
 //    @Test func checkDay03() async throws {
