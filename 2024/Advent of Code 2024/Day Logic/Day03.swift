@@ -76,26 +76,19 @@ struct Day03 {
                         chunkEnd = line.endIndex
                     }
                     let chunk = line[index..<chunkEnd]
-                    print("Checking chunk: \(chunk)")
                     
                     if chunk.hasPrefix("do()") {
-                        print("Enabled on do()")
                         enabled = true
                         index = line.index(index, offsetBy: 4)
                     } else if chunk.hasPrefix("don't()") {
-                        print("Diabled on don't()")
                         enabled = false
                         index = line.index(index, offsetBy: 7)
                     } else if chunk.hasPrefix("mul("), enabled {
-                        print("Potential mul: \(chunk)")
-                        
                         if let match = chunk.firstMatch(of: regex), let l = Int(match.1), let r = Int(match.2) {
                             // Valid mul(): do the math and advance past it
-                            print("Valid mul, \(l) x \(r)")
                             sum += (l * r)
                             index = line.index(index, offsetBy: match.0.count)
                         } else {
-                            print("Invalid mul, advancing")
                             // Not a valid mul(): advance by 1
                             index = line.index(index, offsetBy: 1)
                         }
@@ -103,8 +96,6 @@ struct Day03 {
                         index = line.index(index, offsetBy: 1)
                     }
                 }
-                
-                
             }
             
             return sum.description
