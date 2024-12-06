@@ -13,7 +13,11 @@ struct GridTests {
         #expect(grid.isValid(position: CharGrid.Position(x: 3, y: 3)))
         
         #expect(grid.char(at: CharGrid.Position(x: 0, y: 0)) == "1")
+        #expect(grid.char(at: CharGrid.Position(x: 3, y: 0)) == "4")
+        
         #expect(grid.char(at: CharGrid.Position(x: 1, y: 1)) == "6")
+        #expect(grid.char(at: CharGrid.Position(x: 2, y: 1)) == "7")
+        
         #expect(grid.char(at: CharGrid.Position(x: 2, y: 2)) == "a")
         #expect(grid.char(at: CharGrid.Position(x: 3, y: 3)) == "f")
     }
@@ -35,5 +39,35 @@ struct GridTests {
         #expect(grid.char(at: CharGrid.Position(x: 4, y: 4)) == nil)
         #expect(grid.char(at: CharGrid.Position(x: 50, y: 23)) == nil)
     }
+    
+    @Test func moves() async throws {
+        let basic: [String] = ["1234", "5678", "90ab", "cdef"]
+        let grid = CharGrid(input: basic)
+        
+        let topLeft = CharGrid.Position(x: 0, y: 0)
+        let bottomRight = CharGrid.Position(x: 3, y: 3)
+        
+        #expect(grid.char(at: topLeft.right()) == "2")
+        #expect(grid.char(at: topLeft.down()) == "5")
+        #expect(grid.char(at: bottomRight.up()) == "b")
+        #expect(grid.char(at: bottomRight.left()) == "e")
+    }
+    
+    @Test func diagonals() async throws {
+        let bigger: [String] = [
+            "..X...",
+            ".SAMX.",
+            ".A..A.",
+            "XMAS.S",
+            ".X...."
+        ]
+        let grid = CharGrid(input: bigger)
+        
+        let start = CharGrid.Position(x: 2, y: 0)
+        #expect(grid.char(at: start) == "X")
+        #expect(grid.char(at: start.down().right()) == "M")
+        #expect(grid.char(at: start.down().right().down().right()) == "A")
+    }
+    
 
 }

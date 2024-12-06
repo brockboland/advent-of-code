@@ -8,6 +8,27 @@
 import Foundation
 
 struct CharGrid {
+    struct Position {
+        let x: Int
+        let y: Int
+        
+        func up() -> Position {
+            return Position(x: x, y: y - 1)
+        }
+        
+        func down() -> Position {
+            return Position(x: x, y: y + 1)
+        }
+        
+        func left() -> Position {
+            return Position(x: x-1, y: y)
+        }
+        
+        func right() -> Position {
+            return Position(x: x+1, y: y)
+        }
+    }
+
     private let contents: [[Character]]
     
     init(input: [String]) {
@@ -18,7 +39,7 @@ struct CharGrid {
         guard isValid(position: position) else {
             return nil
         }
-        return contents[position.x][position.y]
+        return contents[position.y][position.x]
     }
     
     private var maxX: Int {
@@ -40,8 +61,4 @@ struct CharGrid {
         return (position.x <= maxX && position.y <= maxY)
     }
     
-    struct Position {
-        let x: Int
-        let y: Int
-    }
 }
