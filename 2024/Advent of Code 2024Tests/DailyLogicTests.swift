@@ -37,9 +37,9 @@ struct DailyLogicTests {
     @Test func checkDay04() async throws {
         #expect(Day04.Part1.exampleInput() == "18")
         #expect(Day04.Part1.realInput() == "2401")
-//        
-//        #expect(Day04.Part2.exampleInput() == "0")
-//        #expect(Day04.Part2.realInput() == "0")
+        
+        #expect(Day04.Part2.exampleInput() == "9")
+        #expect(Day04.Part2.realInput() == "1822")
     }
 
     //    @Test func checkDay03() async throws {
