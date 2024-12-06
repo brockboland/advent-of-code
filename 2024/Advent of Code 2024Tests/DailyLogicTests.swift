@@ -8,7 +8,7 @@
 import Testing
 @testable import Advent_of_Code_2024
 
-struct Advent_of_Code_2024Tests {
+struct DailyLogicTests {
 
     @Test func checkDay01() async throws {
         #expect(Day01.Part1.exampleInput() == "11")
