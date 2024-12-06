@@ -32,7 +32,10 @@ struct CharGrid {
     private let contents: [[Character]]
     
     init(input: [String]) {
-        contents = input.map { Array($0) }
+        contents = input.flatMap{
+            guard !$0.isEmpty else { return nil }
+            return Array($0)
+        }
     }
     
     func char(at position: Position) -> Character? {
@@ -42,13 +45,15 @@ struct CharGrid {
         return contents[position.y][position.x]
     }
     
-    private var maxX: Int {
+    var maxX: Int {
         return (contents.first?.count ?? 1) - 1
     }
     
-    private var maxY: Int {
+    var maxY: Int {
         return contents.count - 1
     }
+    
+    // TODO: figure out how to do a validPositions range
     
     func isValid(position: Position) -> Bool {
         guard !contents.isEmpty,

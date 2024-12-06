@@ -7,6 +7,9 @@ struct GridTests {
         let basic: [String] = ["1234", "5678", "90ab", "cdef"]
         let grid = CharGrid(input: basic)
         
+        #expect(grid.maxX == 3)
+        #expect(grid.maxY == 3)
+        
         #expect(grid.isValid(position: CharGrid.Position(x: 0, y: 0)))
         #expect(grid.isValid(position: CharGrid.Position(x: 1, y: 1)))
         #expect(grid.isValid(position: CharGrid.Position(x: 2, y: 2)))
@@ -67,6 +70,27 @@ struct GridTests {
         #expect(grid.char(at: start) == "X")
         #expect(grid.char(at: start.down().right()) == "M")
         #expect(grid.char(at: start.down().right().down().right()) == "A")
+    }
+    
+    @Test func biggerDiagonals() async throws {
+        let input: [String] = [
+            "MMMSXXMASM",
+            "MSAMXMSMSA",
+            "AMXSXMAAMM",
+            "MSAMASMSMX",
+            "XMASAMXAMM",
+            "XXAMMXXAMA",
+            "SMSMSASXSS",
+            "SAXAMASAAA",
+            "MAMMMXMMMM",
+            "MXMXAXMASX"]
+        
+        let grid = CharGrid(input: input)
+        let start = CharGrid.Position(x: 1, y: 9)
+        #expect(grid.char(at: start) == "X")
+        #expect(grid.char(at: start.up().right()) == "M")
+        #expect(grid.char(at: start.up().right().up().right()) == "A")
+        #expect(grid.char(at: start.up().right().up().right().up().right()) == "S")
     }
     
 
