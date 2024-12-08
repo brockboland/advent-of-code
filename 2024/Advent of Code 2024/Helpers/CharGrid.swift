@@ -12,19 +12,19 @@ struct CharGrid {
         let x: Int
         let y: Int
         
-        func up() -> Position {
+        var up: Position {
             return Position(x: x, y: y - 1)
         }
         
-        func down() -> Position {
+        var down: Position {
             return Position(x: x, y: y + 1)
         }
         
-        func left() -> Position {
+        var left: Position {
             return Position(x: x-1, y: y)
         }
         
-        func right() -> Position {
+        var right: Position {
             return Position(x: x+1, y: y)
         }
     }

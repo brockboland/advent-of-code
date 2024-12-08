@@ -39,35 +39,35 @@ struct Day04 {
             
             var found = 0
             
-            if grid.char(at: position.up()) == "M" && grid.char(at: position.up().up()) == "A" && grid.char(at: position.up().up().up()) == "S" {
+            if grid.char(at: position.up) == "M" && grid.char(at: position.up.up) == "A" && grid.char(at: position.up.up.up) == "S" {
                 found += 1
             }
             
-            if grid.char(at: position.down()) == "M" && grid.char(at: position.down().down()) == "A" && grid.char(at: position.down().down().down()) == "S" {
+            if grid.char(at: position.down) == "M" && grid.char(at: position.down.down) == "A" && grid.char(at: position.down.down.down) == "S" {
                 found += 1
             }
             
-            if grid.char(at: position.right()) == "M" && grid.char(at: position.right().right()) == "A" && grid.char(at: position.right().right().right()) == "S" {
+            if grid.char(at: position.right) == "M" && grid.char(at: position.right.right) == "A" && grid.char(at: position.right.right.right) == "S" {
                 found += 1
             }
             
-            if grid.char(at: position.left()) == "M" && grid.char(at: position.left().left()) == "A" && grid.char(at: position.left().left().left()) == "S" {
+            if grid.char(at: position.left) == "M" && grid.char(at: position.left.left) == "A" && grid.char(at: position.left.left.left) == "S" {
                 found += 1
             }
             
-            if grid.char(at: position.up().left()) == "M" && grid.char(at: position.up().left().up().left()) == "A" && grid.char(at: position.up().left().up().left().up().left()) == "S" {
+            if grid.char(at: position.up.left) == "M" && grid.char(at: position.up.left.up.left) == "A" && grid.char(at: position.up.left.up.left.up.left) == "S" {
                 found += 1
             }
             
-            if grid.char(at: position.up().right()) == "M" && grid.char(at: position.up().right().up().right()) == "A" && grid.char(at: position.up().right().up().right().up().right()) == "S" {
+            if grid.char(at: position.up.right) == "M" && grid.char(at: position.up.right.up.right) == "A" && grid.char(at: position.up.right.up.right.up.right) == "S" {
                 found += 1
             }
             
-            if grid.char(at: position.down().left()) == "M" && grid.char(at: position.down().left().down().left()) == "A" && grid.char(at: position.down().left().down().left().down().left()) == "S" {
+            if grid.char(at: position.down.left) == "M" && grid.char(at: position.down.left.down.left) == "A" && grid.char(at: position.down.left.down.left.down.left) == "S" {
                 found += 1
             }
             
-            if grid.char(at: position.down().right()) == "M" && grid.char(at: position.down().right().down().right()) == "A" && grid.char(at: position.down().right().down().right().down().right()) == "S" {
+            if grid.char(at: position.down.right) == "M" && grid.char(at: position.down.right.down.right) == "A" && grid.char(at: position.down.right.down.right.down.right) == "S" {
                 found += 1
             }
             
@@ -114,10 +114,10 @@ struct Day04 {
                 return 0
             }
                         
-            guard let upLeft = grid.char(at: position.up().left()),
-                  let upRight = grid.char(at: position.up().right()),
-                  let downLeft = grid.char(at: position.down().left()),
-                  let downRight = grid.char(at: position.down().right()) else {
+            guard let upLeft = grid.char(at: position.up.left),
+                  let upRight = grid.char(at: position.up.right),
+                  let downLeft = grid.char(at: position.down.left),
+                  let downRight = grid.char(at: position.down.right) else {
                 return 0
             }
             

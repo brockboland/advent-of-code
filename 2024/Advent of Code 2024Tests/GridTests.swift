@@ -50,10 +50,10 @@ struct GridTests {
         let topLeft = CharGrid.Position(x: 0, y: 0)
         let bottomRight = CharGrid.Position(x: 3, y: 3)
         
-        #expect(grid.char(at: topLeft.right()) == "2")
-        #expect(grid.char(at: topLeft.down()) == "5")
-        #expect(grid.char(at: bottomRight.up()) == "b")
-        #expect(grid.char(at: bottomRight.left()) == "e")
+        #expect(grid.char(at: topLeft.right) == "2")
+        #expect(grid.char(at: topLeft.down) == "5")
+        #expect(grid.char(at: bottomRight.up) == "b")
+        #expect(grid.char(at: bottomRight.left) == "e")
     }
     
     @Test func diagonals() async throws {
@@ -68,8 +68,8 @@ struct GridTests {
         
         let start = CharGrid.Position(x: 2, y: 0)
         #expect(grid.char(at: start) == "X")
-        #expect(grid.char(at: start.down().right()) == "M")
-        #expect(grid.char(at: start.down().right().down().right()) == "A")
+        #expect(grid.char(at: start.down.right) == "M")
+        #expect(grid.char(at: start.down.right.down.right) == "A")
     }
     
     @Test func biggerDiagonals() async throws {
@@ -88,9 +88,9 @@ struct GridTests {
         let grid = CharGrid(input: input)
         let start = CharGrid.Position(x: 1, y: 9)
         #expect(grid.char(at: start) == "X")
-        #expect(grid.char(at: start.up().right()) == "M")
-        #expect(grid.char(at: start.up().right().up().right()) == "A")
-        #expect(grid.char(at: start.up().right().up().right().up().right()) == "S")
+        #expect(grid.char(at: start.up.right) == "M")
+        #expect(grid.char(at: start.up.right.up.right) == "A")
+        #expect(grid.char(at: start.up.right.up.right.up.right) == "S")
     }
     
 

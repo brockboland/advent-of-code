@@ -19,4 +19,17 @@ struct InputReader {
         }
         return nil;
     }
+    
+    static func chunkedContentsOf(filename: String) -> [[String]]? {
+        do {
+            if let path = Bundle.main.path(forResource: filename, ofType: "txt") {
+               let data = try String(contentsOfFile: path, encoding: .utf8)
+                let rawChunks = data.components(separatedBy: "\n\n")
+                return rawChunks.map { $0.components(separatedBy: .newlines).filter { !$0.isEmpty } }
+            }
+        } catch let e {
+            debugPrint("Failed to read file \(filename): ", e)
+        }
+        return nil;
+    }
 }
