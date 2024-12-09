@@ -93,5 +93,28 @@ struct GridTests {
         #expect(grid.char(at: start.up.right.up.right.up.right) == "S")
     }
     
+    
+    @Test func gridIterator() async throws {
+        let basic: [String] = ["1234", "5678", "90ab", "cdef"]
+        let grid = CharGrid(input: basic)
+        
+        var spots = 0
+        for position in grid {
+            spots += 1
+        }
+        #expect(spots == 16)
+    }
 
+    @Test func finder() async throws {
+        let basic: [String] = ["1234", "5678", "90ab", "cdef"]
+        let grid = CharGrid(input: basic)
+        
+        let aSpot = grid.positionOfFirst { $0 == "a" }
+        #expect(aSpot!.y == 2)
+        #expect(aSpot!.x == 2)
+        
+        let twoSpot = grid.positionOfFirst { $0 == "2" }
+        #expect(twoSpot!.y == 0)
+        #expect(twoSpot!.x == 1)
+    }
 }
