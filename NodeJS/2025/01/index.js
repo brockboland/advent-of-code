@@ -1,6 +1,4 @@
-var fs = require("fs");
-
-const part1 = (start, input) => {
+export const part1 = (start, input) => {
     let position = start
     let zeroCounter = 0
     for (let line of input) {
@@ -19,7 +17,7 @@ const part1 = (start, input) => {
     return zeroCounter
 }
 
-const part2 = (start, input) => {
+export const part2 = (start, input) => {
     let position = parseInt(start)
     let zeroCounter = 0
     
@@ -46,10 +44,4 @@ const part2 = (start, input) => {
         }
     }
     return zeroCounter
-}
-
-
-module.exports = {
-    part1,
-    part2
 }

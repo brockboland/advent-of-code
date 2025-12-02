@@ -1,4 +1,4 @@
-const arrayAllSame = (input) => {
+export const arrayAllSame = (input) => {
     if (input.length < 2) return true
 
     for (let i = 1; i < input.length; i++) {
@@ -7,8 +7,4 @@ const arrayAllSame = (input) => {
         }
     }
     return true
-}
-
-module.exports = {
-  arrayAllSame
 };

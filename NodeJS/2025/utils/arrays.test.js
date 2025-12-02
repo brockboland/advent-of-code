@@ -1,4 +1,4 @@
-const { arrayAllSame } = require('./arrays');
+import { arrayAllSame } from './arrays.js';
 
 describe('Array comparer', () => {
   test('arrayAllSame is exported', () => {

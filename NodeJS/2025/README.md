@@ -7,20 +7,20 @@ Each day's solution is organized in its own folder (e.g., `01/`, `02/`, etc.) wi
 
 ```
 NN/
-├── index.js           # Solution code with part1 and part2 functions
-├── index.test.js      # Test cases for both parts
+├── index.js           # Solution code with part1 and part2 functions (ES6 modules)
+├── index.test.js      # Test cases for both parts (ES6 modules)
 ├── input-sample.txt   # Sample/example input for testing
 └── input-real.txt     # Real puzzle input
 ```
 
 ### File Details
 
-- **`index.js`**: Exports two functions:
-  - `part1(input)` — solves part 1 of the day's puzzle
-  - `part2(input)` — solves part 2 of the day's puzzle
+- **`index.js`**: Exports two functions using ES6 export syntax:
+  - `export const part1 = (input) => { ... }` — solves part 1 of the day's puzzle
+  - `export const part2 = (input) => { ... }` — solves part 2 of the day's puzzle
   - Both functions receive input as an array of lines (strings)
 
-- **`index.test.js`**: Jest test file organized into two describe blocks:
+- **`index.test.js`**: Jest test file using ES6 imports, organized into two describe blocks:
   - `Day NN — Part 1` — tests for the `part1` function
   - `Day NN — Part 2` — tests for the `part2` function
 
@@ -45,16 +45,33 @@ npm test -- 01 2
 
 This will run only Part 2 tests for day 01. Use `1` for Part 1 or `2` for Part 2.
 
+### Run utility tests
+
+```bash
+npm test -- utils
+```
+
+This will run all tests in the `utils/` directory.
+
 ### Run tests directly (without npm)
 
 ```bash
 node ./test-runner.js 01
 node ./test-runner.js 01 2
+node ./test-runner.js utils
 ```
 
 ## Example Test Structure
 
 ```javascript
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { part1, part2 } from './index.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 describe('Day NN — Part 1', () => {
   test('part1 is exported', () => {
     expect(typeof part1).toBe('function');
@@ -82,4 +99,4 @@ describe('Day NN — Part 2', () => {
 
 - **Node.js**: >=16
 - **Package Manager**: Yarn
-- **Testing**: Jest
+- **Testing**: Jest (configured for ES6 modules)

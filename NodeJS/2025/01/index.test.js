@@ -1,6 +1,10 @@
-const fs = require('fs');
-const path = require('path');
-const { part1, part2 } = require('./index');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { part1, part2 } from './index.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 describe('Day 01 — Part 1', () => {
   test('part1 is exported', () => {

@@ -1,7 +1,10 @@
 #!/usr/bin/env node
-const { spawnSync } = require('child_process');
-const path = require('path');
-const fs = require('fs');
+import { spawnSync } from 'child_process';
+import path from 'path';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 function getArgs() {
   // Accepts: `node test-runner.js <target> [part]` 
@@ -44,6 +47,7 @@ if (!fs.existsSync(jestBin)) {
 
 // Determine if target is "utils" or a day number, and set up Jest args accordingly
 let jestArgs = [jestBin, '--colors'];
+let nodeArgs = ['--experimental-vm-modules'];
 let cwd = __dirname;
 
 if (target === 'utils') {
@@ -63,5 +67,5 @@ if (target === 'utils') {
   }
 }
 
-const result = spawnSync(process.execPath, jestArgs, { stdio: 'inherit', cwd });
-process.exit(result.status);
+const result = spawnSync(process.execPath, [...nodeArgs, ...jestArgs], { stdio: 'inherit', cwd });
+process.exit(result.status ?? 0);
