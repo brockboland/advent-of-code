@@ -1,10 +1,5 @@
 import { arrayAllSame } from '../utils/arrays.js';
-
-const assert = (condition, message) => {
-        if (!condition) {
-            throw new Error(message || "Assertion failed");
-        }
-    }
+import assert from 'assert';
 
 export const part1 = (input) => {
     assert(typeof input === 'string', 'Input must be a string');
