@@ -3,3 +3,4 @@
 **/input.txt
 **/*input-real.txt
 **/inputs/*.txt
+**/node_modules/*

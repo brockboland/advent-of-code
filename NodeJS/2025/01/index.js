@@ -1,8 +1,6 @@
 var fs = require("fs");
-var sampleInput = fs.readFileSync("./input-sample.txt").toString("utf-8").split("\n");
-var problemInput = fs.readFileSync("./input-real.txt").toString("utf-8").split("\n");
 
-const zeroChecks = (start, input) => {
+const part1 = (start, input) => {
     let position = start
     let zeroCounter = 0
     for (let line of input) {
@@ -21,7 +19,7 @@ const zeroChecks = (start, input) => {
     return zeroCounter
 }
 
-const complicated = (start, input) => {
+const part2 = (start, input) => {
     let position = parseInt(start)
     let zeroCounter = 0
     
@@ -44,18 +42,14 @@ const complicated = (start, input) => {
 
             if (position === 0) {
                 zeroCounter += 1
-                console.log("Landed on zero, counter now at ", zeroCounter, " during step ", line)
             }
         }
     }
     return zeroCounter
 }
 
-console.log("First part:")
-console.log("Sample Check:", zeroChecks(50, sampleInput))
-console.log("Real Check:", zeroChecks(50, problemInput)) // 1180
 
-
-console.log("Second part:")
-console.log("Sample Check:", complicated(50, sampleInput))
-console.log("Real Check:", complicated(50, problemInput)) // 6892
+module.exports = {
+    part1,
+    part2
+}

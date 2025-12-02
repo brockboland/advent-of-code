@@ -1,0 +1,15 @@
+{
+  "name": "advent-of-code-2025",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "yarn@1.22.19",
+  "engines": {
+    "node": ">=16"
+  },
+  "scripts": {
+    "test": "node ./test-runner.js"
+  },
+  "devDependencies": {
+    "jest": "^29.6.1"
+  }
+}
