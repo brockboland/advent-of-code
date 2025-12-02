@@ -4,10 +4,7 @@ const path = require('path');
 const fs = require('fs');
 
 function getArgs() {
-  // Accepts: `node test-runner.js <day> [part]` or via `npm test -- <day> [part]`
-  const cliDay = process.argv[2];
-  const cliPart = process.argv[3];
-
+  // Accepts: `node test-runner.js <day> [part]` or via `npm test <day> [part]` or `yarn test <day> [part]`
   let cooked = [];
   try {
     const npmArgv = process.env.npm_config_argv;
@@ -17,8 +14,10 @@ function getArgs() {
     }
   } catch (e) {}
 
-  const day = cliDay || cooked[0];
-  const part = cliPart || cooked[1];
+  // Prefer cooked args from npm_config_argv (set when run via npm/yarn), 
+  // then fall back to direct process.argv (when run directly via node)
+  const day = cooked[0] || process.argv[2];
+  const part = cooked[1] || process.argv[3];
 
   if (!day) {
     console.error('Usage: npm test <day> [part] (e.g. npm test 01 2)');
