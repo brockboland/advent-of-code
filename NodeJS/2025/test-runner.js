@@ -4,7 +4,9 @@ const path = require('path');
 const fs = require('fs');
 
 function getArgs() {
-  // Accepts: `node test-runner.js <day> [part]` or via `npm test <day> [part]` or `yarn test <day> [part]`
+  // Accepts: `node test-runner.js <target> [part]` 
+  // where <target> is either "utils" or a day number (e.g., 01, 02)
+  // via `npm test <target> [part]` or `yarn test <target> [part]`
   let cooked = [];
   try {
     const npmArgv = process.env.npm_config_argv;
@@ -16,18 +18,21 @@ function getArgs() {
 
   // Prefer cooked args from npm_config_argv (set when run via npm/yarn), 
   // then fall back to direct process.argv (when run directly via node)
-  const day = cooked[0] || process.argv[2];
+  const target = cooked[0] || process.argv[2];
   const part = cooked[1] || process.argv[3];
 
-  if (!day) {
-    console.error('Usage: npm test <day> [part] (e.g. npm test 01 2)');
+  if (!target) {
+    console.error('Usage: npm test <target> [part]');
+    console.error('  <target> can be a day (e.g., 01, 02) or "utils"');
+    console.error('  [part] is optional for day tests (1 or 2)');
+    console.error('Examples: npm test 01, npm test 01 2, npm test utils');
     process.exit(1);
   }
 
-  return { day, part };
+  return { target, part };
 }
 
-const { day, part } = getArgs();
+const { target, part } = getArgs();
 let jestBin = path.resolve(__dirname, 'node_modules', 'jest', 'bin', 'jest.js');
 if (!fs.existsSync(jestBin)) {
   jestBin = path.resolve(__dirname, '..', 'node_modules', 'jest', 'bin', 'jest.js');
@@ -37,14 +42,26 @@ if (!fs.existsSync(jestBin)) {
   process.exit(1);
 }
 
-let pattern = `/${day}/`;
-const args = [jestBin, '--testPathPattern', pattern, '--colors'];
-if (part) {
-  // Use testNamePattern to run only the describe/test names for the requested part
-  // We expect describe titles to include the substring `Part <n>` (e.g. `Part 2`)
-  const namePattern = `Part\\s*${part}`;
-  args.push('--testNamePattern', namePattern);
+// Determine if target is "utils" or a day number, and set up Jest args accordingly
+let jestArgs = [jestBin, '--colors'];
+let cwd = __dirname;
+
+if (target === 'utils') {
+  // Running utils tests
+  jestArgs.push('--testPathPattern', '/utils/');
+} else {
+  // Running day tests (01, 02, etc.)
+  const pattern = `/${target}/`;
+  jestArgs.push('--testPathPattern', pattern);
+  cwd = path.resolve(__dirname, target);
+  
+  if (part) {
+    // Use testNamePattern to run only the describe/test names for the requested part
+    // We expect describe titles to include the substring `Part <n>` (e.g. `Part 2`)
+    const namePattern = `Part\\s*${part}`;
+    jestArgs.push('--testNamePattern', namePattern);
+  }
 }
 
-const result = spawnSync(process.execPath, args, { stdio: 'inherit', cwd: path.resolve(__dirname, day) });
+const result = spawnSync(process.execPath, jestArgs, { stdio: 'inherit', cwd });
 process.exit(result.status);
