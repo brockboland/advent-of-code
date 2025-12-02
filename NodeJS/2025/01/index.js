@@ -1,20 +1,6 @@
 var fs = require("fs");
-var problemInput = fs.readFileSync("./input.txt").toString("utf-8").split("\n");
-
-let sampleInput = [
-    "L68",
-    "L30",
-    "R48",
-    "L5",
-    "R60",
-    "L55",
-    "L1",
-    "L99",
-    "R14",
-    "L82"
-]
-
-
+var sampleInput = fs.readFileSync("./input-sample.txt").toString("utf-8").split("\n");
+var problemInput = fs.readFileSync("./input-real.txt").toString("utf-8").split("\n");
 
 const zeroChecks = (start, input) => {
     let position = start
@@ -38,54 +24,38 @@ const zeroChecks = (start, input) => {
 const complicated = (start, input) => {
     let position = parseInt(start)
     let zeroCounter = 0
-    let previousAtZero = false
+    
     for (let line of input) {
         let direction = line[0]
         let amount = parseInt(line.slice(1))
-        if (direction === "L") {
-            position -= amount
-        } else if (direction === "R") {
-            position += amount
-        }
 
-        // If a rotation stats at 0, and does not cross 0 again, it should not count again
-        if (previousAtZero && (position < 100 && position > -100)) {
-            // No z-counts
-            previousAtZero = false
-        } else {
+        for (let i = 0; i < amount; i++) {
+            if (direction === "L") {
+                position -= 1
+            } else if (direction === "R") {
+                position += 1
+            }
 
             if (position < 0) {
-                zeroCounter += Math.floor(Math.abs(position) / 100) + 1
-                console.log("Updated to ", zeroCounter, " after ", line, ", new position: ", position)
-            } else if (position % 100 == 0) {
+                position = position + 100
+            } else if (position >= 100) {
+                position = position - 100
+            }
+
+            if (position === 0) {
                 zeroCounter += 1
-                console.log("Landed on zero ", zeroCounter, " after ", line, ", new position: ", position)
-                previousAtZero = true
-            } else if (position > 100) {
-                zeroCounter += Math.floor(position / 100)
-                console.log("Updated to ", zeroCounter, " after ", line, ", new position: ", position)
-            } else {
-                console.log("No crossing after ", line, ", new position: ", position)
+                console.log("Landed on zero, counter now at ", zeroCounter, " during step ", line)
             }
         }
-        while (position < 0) {
-            position = position + 100
-        }
-        position = position % 100;
-        console.log("Normalized position: ", position, "\n")
     }
     return zeroCounter
 }
 
 console.log("First part:")
 console.log("Sample Check:", zeroChecks(50, sampleInput))
-console.log("Real Check:", zeroChecks(50, problemInput))
+console.log("Real Check:", zeroChecks(50, problemInput)) // 1180
 
 
 console.log("Second part:")
 console.log("Sample Check:", complicated(50, sampleInput))
-// console.log("Real Check:", complicated(50, problemInput))
-
-// NOT these values
-// 6614
-// 6394
+console.log("Real Check:", complicated(50, problemInput)) // 6892

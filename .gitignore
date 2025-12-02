@@ -1,4 +1,5 @@
 .DS_Store
 
 **/input.txt
+**/*input-real.txt
 **/inputs/*.txt
