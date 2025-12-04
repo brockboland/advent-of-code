@@ -7,34 +7,7 @@ import { assert } from "console";
  * @param {string[]} input - input lines (array)
  */
 export const part1 = (input) => {
-    assert(Array.isArray(input));
-
-    let runningTotal = 0;
-    for (const line of input) {
-        let indexOfLargestFirstDigit = 0;
-        for (let i = 1; i < line.length-1; i++) {
-            if (line[i] > line[indexOfLargestFirstDigit]) {
-                indexOfLargestFirstDigit = i;
-                if (line[i] === '9') {
-                    break; // can't do better than a 9
-                }
-            }
-        }
-
-        let indexOfSecondLargestDigit = indexOfLargestFirstDigit + 1;
-        for (let i = indexOfSecondLargestDigit; i < line.length; i++) {
-            if (line[i] > line[indexOfSecondLargestDigit]) {
-                indexOfSecondLargestDigit = i;
-                if (line[i] === '9') {
-                    break; // can't do better than a 9
-                }
-            }
-        }
-
-        let joltage = line[indexOfLargestFirstDigit] + line[indexOfSecondLargestDigit];
-        runningTotal += parseInt(joltage);
-    }
-    return runningTotal
+    return batteryPicker(input, 2);
 };
 
 /**
@@ -42,5 +15,39 @@ export const part1 = (input) => {
  * @param {string[]} input - input lines (array)
  */
 export const part2 = (input) => {
-  // TODO: implement Part 2
+  return batteryPicker(input, 12);
 };
+
+
+
+const batteryPicker = (input, numberOfBatteries) => {
+    assert(Array.isArray(input));
+
+    let runningTotal = 0;
+    for (const line of input) {
+        let indexOfBestDigits = []
+        let startIndexForNextBatterySearch = 0;
+
+        for (let batterySelectionCounter = 0; batterySelectionCounter < numberOfBatteries; batterySelectionCounter++) {
+            let indexOfNextBatteryToUse = startIndexForNextBatterySearch;
+            let endingIndexForSearch = line.length - (numberOfBatteries - indexOfBestDigits.length);
+            // console.log(`Searching for battery ${batterySelectionCounter} between ${startIndexForNextBatterySearch} and ${endingIndexForSearch}`);
+
+            for (let i = startIndexForNextBatterySearch+1; i <= endingIndexForSearch; i++) {
+                if (line[i] > line[indexOfNextBatteryToUse]) {
+                    indexOfNextBatteryToUse = i;
+                    if (line[i] === '9') {
+                        break; // can't do better than a 9
+                    }
+                }
+            }
+            indexOfBestDigits.push(indexOfNextBatteryToUse)
+            startIndexForNextBatterySearch = indexOfNextBatteryToUse + 1;
+        }
+
+        let joltage = indexOfBestDigits.map(index => line[index]).join('');
+        // console.log(`Joltage for ${line}: ${joltage}, ${indexOfBestDigits}`);
+        runningTotal += parseInt(joltage);
+    }
+    return runningTotal
+}
