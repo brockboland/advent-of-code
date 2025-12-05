@@ -91,3 +91,27 @@ export const surroundingPointsMatching = (grid, startingPoint, includeDiagonals,
 
     return matchingCoordinates;
 }
+
+
+
+export const gridReplacingAtPoint = (input, pointToReplace, newValue) => {
+    assert(Array.isArray(input), 'Grid must be an array'); 
+    let finalGrid = [];
+    for (let x = 0; x < input.length; x++) {
+        assert(typeof input[x] === 'string' || Array.isArray(input[x]), 'Rows in the grid must be strings or arrays'); 
+        if (x !== pointToReplace.x) {
+            // Not replacing a value in this row, so copy the whole thing
+            finalGrid[x] = input[x]
+        } else {
+            finalGrid[x] = [];
+            for (let y = 0; y < input[x].length; y++) {
+                if (y === pointToReplace.y) {
+                    finalGrid[x][y] = newValue;
+                } else {
+                    finalGrid[x][y] = input[x][y];
+                }
+            }
+        }
+    }
+    return finalGrid;
+}
