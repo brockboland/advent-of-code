@@ -11,11 +11,16 @@ describe('Day 04 — Part 1', () => {
     expect(typeof part1).toBe('function');
   });
 
-  test.skip('part1 sample (TODO)', () => {
-    // TODO: add sample and expected value
+  test('part1 sample', () => {
     const sample = fs.readFileSync(path.join(__dirname, 'input-sample.txt'), 'utf8').split('\n');
     const result = part1(sample);
-    // expect(result).toBe(/* expected */);
+    expect(result).toBe(13);
+  });
+
+  test('part1 real', () => {
+    const real = fs.readFileSync(path.join(__dirname, 'input-real.txt'), 'utf8').split('\n');
+    const result = part1(real);
+    expect(result).toBe(1441);
   });
 });
 
@@ -24,10 +29,9 @@ describe('Day 04 — Part 2', () => {
     expect(typeof part2).toBe('function');
   });
 
-  test.skip('part2 sample (TODO)', () => {
-    // TODO: add sample and expected value
+  test('part2 sample', () => {
     const sample = fs.readFileSync(path.join(__dirname, 'input-sample.txt'), 'utf8').split('\n');
     const result = part2(sample);
-    // expect(result).toBe(/* expected */);
+    expect(result).toBe(1441);
   });
 });
