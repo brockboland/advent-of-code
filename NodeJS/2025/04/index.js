@@ -8,25 +8,14 @@ import { charGridFromInput, maxGridDimensions, coordinatesForItemsMatching, surr
  * @param {string[]} input - input lines (array)
  */
 export const part1 = (input) => {
-    console.log(input)
     assert(input.length > 0, 'Input cannot be empty');
     assert(Array.isArray(input), 'Input must be an array');
 
     const grid = charGridFromInput(input);
-    const { maxX, maxY } = maxGridDimensions(input);
 
-    const rollLocations = coordinatesForItemsMatching(grid, '@')
+    const rollsToMove = rollsWithFewNeighbors(grid)
 
-    let rollsWithFewNeighbors = 0;
-
-    for (const point of rollLocations) {
-        const matchingNeighbors = surroundingPointsMatching(grid, point, true, '@');
-        if (matchingNeighbors.length < 4) {
-            rollsWithFewNeighbors++;
-        }
-    }
-
-    return rollsWithFewNeighbors;
+    return rollsToMove.length;
 };
 
 /**
@@ -37,3 +26,17 @@ export const part2 = (input) => {
   assert(input.length > 0, 'Input cannot be empty');
   assert(Array.isArray(input), 'Input must be an array');
 };
+
+
+const rollsWithFewNeighbors = (grid) => {
+    const rollLocations = coordinatesForItemsMatching(grid, '@')
+    let chosenRolls = [];
+
+    for (const point of rollLocations) {
+        const matchingNeighbors = surroundingPointsMatching(grid, point, true, '@');
+        if (matchingNeighbors.length < 4) {
+            chosenRolls.push(point);
+        }
+    }
+    return chosenRolls
+}
