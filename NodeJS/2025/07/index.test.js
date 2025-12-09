@@ -14,13 +14,13 @@ describe('Day 07 — Part 1', () => {
   test('part1 sample', () => {
     const sample = fs.readFileSync(path.join(__dirname, 'input-sample.txt'), 'utf8').split('\n');
     const result = part1(sample);
-    expect(result).toBe(-1);
+    expect(result).toBe(21);
   });
 
-  test.skip('part1 real', () => {
+  test('part1 real', () => {
     const real = fs.readFileSync(path.join(__dirname, 'input-real.txt'), 'utf8').split('\n');
     const result = part1(real);
-    expect(result).toBe(-1);
+    expect(result).toBe(1499);
   });
 });
 
@@ -32,12 +32,12 @@ describe('Day 07 — Part 2', () => {
   test('part2 sample', () => {
     const sample = fs.readFileSync(path.join(__dirname, 'input-sample.txt'), 'utf8').split('\n');
     const result = part2(sample);
-    expect(result).toBe(-1);
+    expect(result).toBe(40);
   });
 
-  test.skip('part2 real', () => {
+  test('part2 real', () => {
     const real = fs.readFileSync(path.join(__dirname, 'input-real.txt'), 'utf8').split('\n');
     const result = part2(real);
-    expect(result).toBe(-1);
+    expect(result).toBe(24743903847942);
   });
 });
