@@ -13,14 +13,14 @@ describe('Day 08 — Part 1', () => {
 
   test('part1 sample', () => {
     const sample = fs.readFileSync(path.join(__dirname, 'input-sample.txt'), 'utf8').split('\n');
-    const result = part1(sample);
+    const result = part1(sample, 10);
     expect(result).toBe(40);
   });
 
-  test.skip('part1 real', () => {
+  test('part1 real', () => {
     const real = fs.readFileSync(path.join(__dirname, 'input-real.txt'), 'utf8').split('\n');
-    const result = part1(real);
-    expect(result).toBe(-1);
+    const result = part1(real, 1000);
+    expect(result).toBe(112230);
   });
 });
 
