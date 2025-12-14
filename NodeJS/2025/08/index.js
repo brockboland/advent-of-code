@@ -46,13 +46,45 @@ export const part1 = (input, connectionsToMake) => {
  * @param {string[]} input - input lines (array) or raw string
  */
 export const part2 = (input) => {
-  // TODO: implement Part 2
+  // Parse the junction boxes from the input
+  const boxes = parseJunctionBoxes(input)
+  // Create a separate circuit for each junction box, since none are connected initially
+  let circuits = boxes.map((_, index) => {
+    return { connectedBoxes: [index] }
+  })
+
+  // Determine how far all the junction boxes are from one another
+  const distances = computeAllDistances(boxes)
+  const sortedDistances = sortByDistance(distances)
+
+  let lengthOfWireNeeded = -1;
+
+  // Keep connecting until everything is on one circuit
+  while (true) {
+    const nextConnection = sortedDistances.splice(0, 1).pop()
+
+    // Determine which circuits the two boxes are on
+    const circuitAIndex = circuits.findIndex(circuit => circuit.connectedBoxes.includes(nextConnection.aIndex));
+    const circuitBIndex = circuits.findIndex(circuit => circuit.connectedBoxes.includes(nextConnection.bIndex));
+
+    // If the boxes are not already connected, merge the circuits they are on
+    if (circuitAIndex !== circuitBIndex) {
+      circuits[circuitAIndex].connectedBoxes.push(...circuits[circuitBIndex].connectedBoxes);
+      circuits.splice(circuitBIndex, 1);
+    }
+
+    if (circuits.length === 1) {
+      // All boxes are now connected
+      // Determine the length of the wire needed
+      const boxA = boxes[nextConnection.aIndex];
+      const boxB = boxes[nextConnection.bIndex];
+      lengthOfWireNeeded = boxA.x * boxB.x;
+      break;
+    }
+  }
+  return lengthOfWireNeeded
 };
 
-
-const junctionBoxPrint = (box) => {
-  return `(${box.x},${box.y},${box.z})`;
-}
 
 const parseJunctionBoxes = (input) => {
   assert(Array.isArray(input));
