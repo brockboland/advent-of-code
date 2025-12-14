@@ -14,7 +14,7 @@ describe('Day 08 — Part 1', () => {
   test('part1 sample', () => {
     const sample = fs.readFileSync(path.join(__dirname, 'input-sample.txt'), 'utf8').split('\n');
     const result = part1(sample);
-    expect(result).toBe(-1);
+    expect(result).toBe(40);
   });
 
   test.skip('part1 real', () => {
